@@ -1,0 +1,45 @@
+﻿<xapCache source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Bin\ARM\Debug\Testing_OKM_2_Debug_ARM.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="18.04.2017 20:17:37">
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Bin\ARM\Debug\resources.pri" archivePath="resources.pri" lastWriteTime="18.04.2017 17:27:10" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\obj\ARM\Debug\Testing_OKM_2.dll" archivePath="Testing_OKM_2.dll" lastWriteTime="18.04.2017 20:17:33" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Assets\BadgeLogo.png" archivePath="Assets\BadgeLogo.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Assets\Logo.png" archivePath="Assets\Logo.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Assets\SplashScreen.png" archivePath="Assets\SplashScreen.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Assets\SquareTile150x150.png" archivePath="Assets\SquareTile150x150.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Assets\SquareTile71x71.png" archivePath="Assets\SquareTile71x71.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Assets\StoreLogo.png" archivePath="Assets\StoreLogo.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Assets\WideLogo.png" archivePath="Assets\WideLogo.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Toolkit.Content\ApplicationBar.Add.png" archivePath="Toolkit.Content\ApplicationBar.Add.png" lastWriteTime="14.04.2017 1:15:58" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Toolkit.Content\ApplicationBar.Cancel.png" archivePath="Toolkit.Content\ApplicationBar.Cancel.png" lastWriteTime="14.04.2017 1:15:58" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Toolkit.Content\ApplicationBar.Check.png" archivePath="Toolkit.Content\ApplicationBar.Check.png" lastWriteTime="14.04.2017 1:15:58" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Toolkit.Content\ApplicationBar.Delete.png" archivePath="Toolkit.Content\ApplicationBar.Delete.png" lastWriteTime="14.04.2017 1:15:57" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Toolkit.Content\ApplicationBar.Select.png" archivePath="Toolkit.Content\ApplicationBar.Select.png" lastWriteTime="14.04.2017 1:15:57" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\SQLitePCLRaw.lib.e_sqlite3.v110_wp80.1.1.2\runtimes\wp80-arm\native\e_sqlite3.dll" archivePath="e_sqlite3.dll" lastWriteTime="04.01.2017 9:55:10" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Bin\ARM\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="17.04.2017 21:55:17" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Bin\ARM\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Bin\ARM\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="13.04.2017 22:04:29" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="15.08.2013 13:04:48" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll" archivePath="Newtonsoft.Json.dll" lastWriteTime="02.04.2017 17:46:34" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\sqlite-net-pcl.1.3.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll" archivePath="SQLite-net.dll" lastWriteTime="16.01.2017 12:56:02" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\SQLite.Net.Core-PCL.3.1.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll" archivePath="SQLite.Net.dll" lastWriteTime="06.11.2015 17:18:40" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\SQLite.Net-PCL.3.1.1\lib\windowsphone8\x86\SQLite.Net.Platform.WindowsPhone8.dll" archivePath="SQLite.Net.Platform.WindowsPhone8.dll" lastWriteTime="06.11.2015 17:18:40" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\sqlite-net-wp8.3.8.5\build\windowsphone8\ARM\Sqlite.winmd" archivePath="Sqlite.winmd" lastWriteTime="06.06.2014 10:32:20" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\SQLiteNetExtensions.1.3.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\SQLiteNetExtensions.dll" archivePath="SQLiteNetExtensions.dll" lastWriteTime="01.01.1980 0:00:00" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\SQLitePCLRaw.bundle_green.1.1.2\build\wp80\arm\SQLitePCLRaw.batteries_green.dll" archivePath="SQLitePCLRaw.batteries_green.dll" lastWriteTime="04.01.2017 9:54:32" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\SQLitePCLRaw.bundle_green.1.1.2\build\wp80\arm\SQLitePCLRaw.batteries_v2.dll" archivePath="SQLitePCLRaw.batteries_v2.dll" lastWriteTime="04.01.2017 9:54:32" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\SQLitePCLRaw.core.1.1.2\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCLRaw.core.dll" archivePath="SQLitePCLRaw.core.dll" lastWriteTime="04.01.2017 9:54:30" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\SQLitePCLRaw.provider.e_sqlite3.wp80.1.1.2\build\wp80\arm\SQLitePCLRaw.provider.e_sqlite3.dll" archivePath="SQLitePCLRaw.provider.e_sqlite3.dll" lastWriteTime="04.01.2017 9:54:34" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\SQLitePCLRaw.provider.e_sqlite3.wp80.1.1.2\build\wp80\arm\SQLitePCL.cppinterop.winmd" archivePath="SQLitePCL.cppinterop.winmd" lastWriteTime="04.01.2017 9:54:34" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.xml" archivePath="Newtonsoft.Json.xml" lastWriteTime="02.04.2017 17:46:34" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\sqlite-net-wp8.3.8.5\build\windowsphone8\ARM\Sqlite.dll" archivePath="Sqlite.dll" lastWriteTime="06.06.2014 10:32:20" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\sqlite-net-pcl.1.3.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.xml" archivePath="SQLite-net.xml" lastWriteTime="16.01.2017 12:56:02" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\packages\SQLitePCLRaw.provider.e_sqlite3.wp80.1.1.2\build\wp80\arm\SQLitePCL.cppinterop.dll" archivePath="SQLitePCL.cppinterop.dll" lastWriteTime="04.01.2017 9:54:34" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\SQLite.WP80\3.18.0\Redist\Debug\ARM\sqlite3.dll" archivePath="sqlite3.dll" lastWriteTime="30.03.2017 17:23:35" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Bin\ARM\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="17.04.2017 21:55:17" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\obj\ARM\Debug\MDILProjectFiles.xml" archivePath="MDILProjectFiles.xml" lastWriteTime="18.04.2017 20:17:36" />
+  <file source="E:\Бакалаврська\Testing_OKM_2\Testing_OKM_2\Bin\ARM\Debug\AppxManifest.xml" archivePath="AppxManifest.xml" lastWriteTime="18.04.2017 17:27:13" />
+</xapCache>

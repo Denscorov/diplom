@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Files>
+  <XAPFiles>
+    <File>resources.pri</File>
+    <File>Testing_2.dll</File>
+    <File>Assets\AlignmentGrid.png</File>
+    <File>Assets\BadgeLogo.png</File>
+    <File>Assets\Logo.png</File>
+    <File>Assets\SplashScreen.png</File>
+    <File>Assets\SquareTile150x150.png</File>
+    <File>Assets\SquareTile71x71.png</File>
+    <File>Assets\StoreLogo.png</File>
+    <File>Assets\WideLogo.png</File>
+    <File>Assets\Tiles\FlipCycleTileLarge.png</File>
+    <File>Assets\Tiles\FlipCycleTileSmall.png</File>
+    <File>Assets\Tiles\IconicTileMediumLarge.png</File>
+    <File>Assets\Tiles\IconicTileSmall.png</File>
+    <File>README_FIRST.txt</File>
+    <File>Toolkit.Content\ApplicationBar.Add.png</File>
+    <File>Toolkit.Content\ApplicationBar.Cancel.png</File>
+    <File>Toolkit.Content\ApplicationBar.Check.png</File>
+    <File>Toolkit.Content\ApplicationBar.Delete.png</File>
+    <File>Toolkit.Content\ApplicationBar.Select.png</File>
+    <File>e_sqlite3.dll</File>
+    <File>AppManifest.xaml</File>
+    <File>Assets\ApplicationIcon.png</File>
+    <File>Assets\Tiles\FlipCycleTileMedium.png</File>
+    <File>Microsoft.Phone.Controls.Toolkit.dll</File>
+    <File Type="PCL">Newtonsoft.Json.dll</File>
+    <File Type="PCL">SQLite-net.dll</File>
+    <File Type="PCL">SQLite.Net.dll</File>
+    <File>SQLite.Net.Platform.WindowsPhone8.dll</File>
+    <File>Sqlite.winmd</File>
+    <File Type="PCL">SQLiteNetExtensions.dll</File>
+    <File>SQLitePCLRaw.batteries_green.dll</File>
+    <File>SQLitePCLRaw.batteries_v2.dll</File>
+    <File Type="PCL">SQLitePCLRaw.core.dll</File>
+    <File>SQLitePCLRaw.provider.e_sqlite3.dll</File>
+    <File>SQLitePCL.cppinterop.winmd</File>
+    <File>Newtonsoft.Json.xml</File>
+    <File>Sqlite.dll</File>
+    <File>SQLite-net.xml</File>
+    <File>SQLitePCL.cppinterop.dll</File>
+    <File>sqlite3.dll</File>
+    <File>WMAppManifest.xml</File>
+    <File>AppxManifest.xml</File>
+  </XAPFiles>
+  <APPXFiles />
+</Files>

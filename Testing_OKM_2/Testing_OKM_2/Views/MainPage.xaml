@@ -1,0 +1,81 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Testing_OKM_2.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Testing_OKM_2.Templates"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="ItemTemplate">
+            <Border BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="0 0 0 1" >
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="20" Text="{Binding Name}"/>
+                    <TextBlock FontSize="15" Text="{Binding Modules.Count, StringFormat='Кількість модулів: {0}'}"/>
+                    <toolkit:ContextMenuService.ContextMenu>
+                        <toolkit:ContextMenu>
+                            <toolkit:MenuItem Header="Почати тестування"/>
+                        </toolkit:ContextMenu>
+                    </toolkit:ContextMenuService.ContextMenu>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+
+    <Grid Name="RootContent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Background="{StaticResource PhoneAccentBrush}">
+            <TextBlock Foreground="#fff" Style="{StaticResource PhoneTextTitle2Style}" Text="{Binding HeaderTitle}"/>
+            <TextBlock Foreground="#fff" Style="{StaticResource PhoneTextTitle3Style}" Text="{Binding HeaderText}"/>
+        </StackPanel>
+
+        <toolkit:LongListMultiSelector Grid.Row="1" ItemTemplate="{StaticResource ItemTemplate}" ItemsSource="{Binding Entity}" Name="ListItems" SelectionChanged="ListItems_SelectionChanged" /> 
+        
+        <StackPanel Grid.Row="2" Background="{StaticResource PhoneAccentBrush}">
+            <TextBlock Style="{StaticResource PhoneTextTitle3Style}" Text="{Binding Entity.Count, StringFormat='Кількість курсів: {0}'}" Foreground="#fff"/>
+        </StackPanel>
+
+        <Popup Grid.RowSpan="3" Name="addPopup">
+            <Border  Width="{Binding ElementName=addPopup, Path=ActualWidth}" Background="{StaticResource PhoneBackgroundBrush}" BorderThickness="15" Padding="15" BorderBrush="#222" >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Назва" Grid.Row="0" Foreground="{StaticResource PhoneForegroundBrush}"/>
+                    <TextBox Name="PopupName" Grid.Row="1" />
+                    <Button Content="Добавити" Name="PopupButtonAdd" Grid.Row="2" Click="PopupButtonAdd_Click"/>
+                </Grid>
+            </Border>
+        </Popup>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBar.Buttons>
+                <shell:ApplicationBarIconButton Text="Add" x:Name="Add" IconUri="/Toolkit.Content/ApplicationBar.Add.png" Click="Add_Click" />
+                <shell:ApplicationBarIconButton Text="Select" x:Name="Select" IconUri="Toolkit.Content/ApplicationBar.Select.png" />
+            </shell:ApplicationBar.Buttons>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="Додати модуль" x:Name="addModule" Click="addModule_Click" IsEnabled="False"/>
+                <shell:ApplicationBarMenuItem Text="Почати тестування" x:Name="startTesting" IsEnabled="False" Click="startTesting_Click"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

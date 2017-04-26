@@ -1,0 +1,61 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Testing_OKM.View.ThemePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.BackgroundColor="#002F8E"
+    shell:SystemTray.ForegroundColor="#fff">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Background="{Binding Path=LocalizedResources.TopPanelBackground, Source={StaticResource LocalizedStrings}}" >
+            <TextBlock Name="Title" Text="Список тем в модулі" FontWeight="Bold" Padding="12 0 12 5" Foreground="#fff"/>
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <ListBox x:Name="ListThemes" ItemsSource="{Binding Path=Themes}" SelectionChanged="ListThemes_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="0 0 0 1" BorderBrush="#414141" >
+                            <StackPanel Orientation="Vertical" Margin="0 15 0 5">
+                                <TextBlock Text="{Binding Name}" FontSize="22"/>
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu>
+                                        <toolkit:MenuItem BorderThickness="0 1 0 1" Header="Start testing" Name="startTesting"/>
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </Grid>
+        <StackPanel Grid.Row="2" Background="{Binding Path=LocalizedResources.TopPanelBackground, Source={StaticResource LocalizedStrings}}">
+            <TextBlock Padding="12 5" Foreground="#fff">
+                <Run Text="Кількість тем в модулі: "/>
+                <Run Text="{Binding Path=Themes.Count}"/>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+
+</phone:PhoneApplicationPage>

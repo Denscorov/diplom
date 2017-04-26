@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Automatically generated-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="check_cpu_0c349f0f-4c5b-47f4-b772-945a1b3b22e7" BeforeTargets="ResolveAssemblyReferences" Condition=" ( ($(Platform.ToLower()) != 'arm') AND ($(Platform.ToLower()) != 'x86') ) ">
+    <Warning Text="$(Platform) is not supported. The Platform configuration must be arm or x86" />
+  </Target>
+  <Target Name="InjectReference_cd774045-f75d-4ae9-8034-2957fb2c42c1" BeforeTargets="ResolveAssemblyReferences">
+    <!--SQLitePCLRaw.provider.e_sqlite3.wp80.arm-->
+    <ItemGroup Condition=" '$(Platform.ToLower())' == 'arm' ">
+      <Reference Include="SQLitePCLRaw.provider.e_sqlite3">
+        <HintPath>$(MSBuildThisFileDirectory)..\..\build\wp80\arm\\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    <!--SQLitePCLRaw.provider.e_sqlite3.wp80.x86-->
+    <ItemGroup Condition=" '$(Platform.ToLower())' == 'x86' ">
+      <Reference Include="SQLitePCLRaw.provider.e_sqlite3">
+        <HintPath>$(MSBuildThisFileDirectory)..\..\build\wp80\x86\\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+  </Target>
+</Project>

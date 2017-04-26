@@ -1,0 +1,17 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="Testing_2" EntryPointType="Testing_2.App" RuntimeVersion="6.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="Testing_2" Source="Testing_2.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls.Toolkit" Source="Microsoft.Phone.Controls.Toolkit.dll" />
+    <AssemblyPart x:Name="Newtonsoft.Json" Source="Newtonsoft.Json.dll" />
+    <AssemblyPart x:Name="SQLite-net" Source="SQLite-net.dll" />
+    <AssemblyPart x:Name="SQLite.Net" Source="SQLite.Net.dll" />
+    <AssemblyPart x:Name="SQLite.Net.Platform.WindowsPhone8" Source="SQLite.Net.Platform.WindowsPhone8.dll" />
+    <AssemblyPart x:Name="SQLiteNetExtensions" Source="SQLiteNetExtensions.dll" />
+    <AssemblyPart x:Name="SQLitePCLRaw.batteries_green" Source="SQLitePCLRaw.batteries_green.dll" />
+    <AssemblyPart x:Name="SQLitePCLRaw.batteries_v2" Source="SQLitePCLRaw.batteries_v2.dll" />
+    <AssemblyPart x:Name="SQLitePCLRaw.core" Source="SQLitePCLRaw.core.dll" />
+    <AssemblyPart x:Name="SQLitePCLRaw.provider.e_sqlite3" Source="SQLitePCLRaw.provider.e_sqlite3.dll" />
+    <AssemblyPart x:Name="Sqlite" Source="Sqlite.dll" />
+    <AssemblyPart x:Name="SQLitePCL.cppinterop" Source="SQLitePCL.cppinterop.dll" />
+  </Deployment.Parts>
+</Deployment>

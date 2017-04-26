@@ -1,0 +1,66 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Testing_3.View.ThemeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Testing_3"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="ModuleTemplate">
+            <StackPanel>
+                <TextBlock Text="{Binding Name}"/>
+                <toolkit:ContextMenuService.ContextMenu>
+                    <toolkit:ContextMenu BorderBrush="#fff" BorderThickness="0 0 0 1">
+                        <toolkit:ContextMenu.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="0" Color="#00A388" />
+                                <GradientStop Offset="1" Color="#79BD8F" />
+                            </LinearGradientBrush>
+                        </toolkit:ContextMenu.Background>
+                        <toolkit:MenuItem Header="Почати тестування" Name="start_testing"/>
+                    </toolkit:ContextMenu>
+                </toolkit:ContextMenuService.ContextMenu>
+            </StackPanel>
+        </DataTemplate>
+        <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+    </phone:PhoneApplicationPage.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Style="{StaticResource TitleBlock}">
+            <TextBlock Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.ApplicationTitle}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#fff"/>
+            <TextBlock Text="{Binding Source={StaticResource LocalizedStrings} ,Path=LocalizedResources.ThemesList}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#fff"/>
+        </StackPanel>
+
+        <ListBox Name="ThemeList" ItemsSource="{Binding Entities}" ItemTemplate="{StaticResource ModuleTemplate}" SelectionMode="Multiple" Margin="12 6" Grid.Row="1" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" />
+
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar BackgroundColor="#017b67" ForegroundColor="#fff">
+            <shell:ApplicationBar.Buttons>
+                <shell:ApplicationBarIconButton Text="тестування" IconUri="/Assets/AppBar/check.png" IsEnabled="False" />
+            </shell:ApplicationBar.Buttons>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="Виділити всі" x:Name="select_all" Click="select_all_Click"/>
+                <shell:ApplicationBarMenuItem Text="Відмінити виділення" x:Name="unselect" Click="unselect_Click"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
