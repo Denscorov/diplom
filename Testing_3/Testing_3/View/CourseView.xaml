@@ -26,7 +26,7 @@
                                 <GradientStop Offset="1" Color="#79BD8F" />
                             </LinearGradientBrush>
                         </toolkit:ContextMenu.Background>
-                        <toolkit:MenuItem Header="Почати тестування" Name="start_testing"/>
+                        <toolkit:MenuItem Header="Почати тестування" Name="start_testing" Click="start_testing_Click"/>
                         <toolkit:MenuItem Header="Переглянути модулі" Name="show_modules" Click="show_modules_Click"/>
                     </toolkit:ContextMenu>
                 </toolkit:ContextMenuService.ContextMenu>

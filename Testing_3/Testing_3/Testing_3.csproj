@@ -113,6 +113,7 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="VIewModel\BaseViewModel.cs" />
+    <Compile Include="VIewModel\QuestionViewModel.cs" />
     <Compile Include="VIewModel\ThemeViewModel.cs" />
     <Compile Include="VIewModel\ModuleViewModel.cs" />
     <Compile Include="VIewModel\CourseViewModel.cs" />
@@ -121,6 +122,9 @@
     </Compile>
     <Compile Include="View\ModuleView.xaml.cs">
       <DependentUpon>ModuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TestingView.xaml.cs">
+      <DependentUpon>TestingView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ThemeView.xaml.cs">
       <DependentUpon>ThemeView.xaml</DependentUpon>
@@ -240,6 +244,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TestingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

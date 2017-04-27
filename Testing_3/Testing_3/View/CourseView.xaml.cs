@@ -67,5 +67,12 @@ namespace Testing_3.View
             var course = item.DataContext as Course;
             NavigationService.Navigate(new Uri("/View/ModuleView.xaml?type=one&str=" + course.Id, UriKind.Relative));
         }
+
+        private void start_testing_Click(object sender, RoutedEventArgs e)
+        {
+            var item = sender as MenuItem;
+            var course = item.DataContext as Course;
+            NavigationService.Navigate(new Uri("/View/TestingView.xaml?type=one&obj=Course&str="+course.Id, UriKind.Relative));
+        }
     }
 }
