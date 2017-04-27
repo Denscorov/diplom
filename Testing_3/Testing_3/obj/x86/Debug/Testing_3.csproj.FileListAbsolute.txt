@@ -422,3 +422,4 @@ G:\Diplom\Testing_3\Testing_3\obj\x86\Debug\MultipleQualifiersPerDimensionFound.
 G:\Diplom\Testing_3\Testing_3\obj\x86\Debug\ProjectArchitectures.txt
 G:\Diplom\Testing_3\Testing_3\obj\x86\Debug\MDILProjectFiles.xml
 G:\Diplom\Testing_3\Testing_3\obj\x86\Debug\XapCacheFile.xml
+G:\Diplom\Testing_3\Testing_3\obj\x86\Debug\View\TestingView.g.cs

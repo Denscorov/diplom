@@ -9,7 +9,7 @@ using SQLiteNetExtensions.Extensions;
 
 namespace Testing_3.VIewModel
 {
-    class QuestionViewModel :BaseViewModel<Question>
+    class QuestionViewModel : BaseViewModel<Question>
     {
         public QuestionViewModel()
         {
@@ -17,13 +17,84 @@ namespace Testing_3.VIewModel
             Entities = new ObservableCollection<Question>();
         }
 
-        public void GetQuestionByCourseId(int id)
+       
+
+        public void GetQuestionsByCourseId(int id)
         {
-            var courses = database.GetAllWithChildren<Course>(c => c.Id == id, true).SingleOrDefault(); ;
-            var questions = from module in courses.Modules
-                            where module.CourseId == courses.Id
-                            select module;
+            var modules = database.GetAllWithChildren<Module>(m => m.CourseId == id, true);
+            List<Question> q = new List<Question>();
+            foreach (var module in modules)
+            {
+                foreach (var theme in module.Themes)
+                {
+                    q.AddRange(theme.Questions);
+                }
+            }
+            Shuffle(q);
+            Entities = new ObservableCollection<Question>(q);
         }
 
+        public void GetQuestionsByCoursesId(int[] ids)
+        {
+            var modules = database.GetAllWithChildren<Module>(m => ids.Contains(m.CourseId), true);
+            List<Question> q = new List<Question>();
+            foreach (var module in modules)
+            {
+                foreach (var theme in module.Themes)
+                {
+                    q.AddRange(theme.Questions);
+                }
+            }
+            Shuffle(q);
+            Entities = new ObservableCollection<Question>(q);
+        }
+
+        public void GetQuestionsByModuleId(int id)
+        {
+            var themes = database.GetAllWithChildren<Theme>(t => t.ModuleId == id);
+            List<Question> q = new List<Question>();
+            foreach (var theme in themes)
+            {
+                q.AddRange(theme.Questions);
+            }
+            Shuffle(q);
+            Entities = new ObservableCollection<Question>(q);
+        }
+
+        public void GetQuestionsByModulesId(int[] ids)
+        {
+            var themes = database.GetAllWithChildren<Theme>(t => ids.Contains(t.ModuleId));
+            List<Question> q = new List<Question>();
+            foreach (var theme in themes)
+            {
+                q.AddRange(theme.Questions);
+            }
+            Shuffle(q);
+            Entities = new ObservableCollection<Question>(q);
+        }
+
+        public void GetQuestionsByThemeId(int id)
+        {
+            var themes = database.GetAllWithChildren<Theme>(t => t.Id == id);
+            List<Question> q = new List<Question>();
+            foreach (var theme in themes)
+            {
+                q.AddRange(theme.Questions);
+            }
+            Shuffle(q);
+            Entities = new ObservableCollection<Question>(q);
+        }
+
+        public void GetQuestionsByThemesId(int[] ids)
+        {
+            var themes = database.GetAllWithChildren<Theme>(t => ids.Contains(t.Id));
+            List<Question> q = new List<Question>();
+            foreach (var theme in themes)
+            {
+                q.AddRange(theme.Questions);
+            }
+            Shuffle(q);
+            Entities = new ObservableCollection<Question>(q);
+        }
     }
 }

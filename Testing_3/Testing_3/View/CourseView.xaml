@@ -52,7 +52,7 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="#017b67" ForegroundColor="#fff">
             <shell:ApplicationBar.Buttons>
-                <shell:ApplicationBarIconButton Text="тестування" IconUri="/Assets/AppBar/check.png" IsEnabled="False" />
+                <shell:ApplicationBarIconButton Text="тестування" IconUri="/Assets/AppBar/check.png" IsEnabled="False" x:Name="Testing" Click="Testing_Click"/>
             </shell:ApplicationBar.Buttons>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="Переглянути модулі" x:Name="show_modules_bar" Click="show_modules_bar_Click"/>

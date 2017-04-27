@@ -74,5 +74,15 @@ namespace Testing_3.View
             var course = item.DataContext as Course;
             NavigationService.Navigate(new Uri("/View/TestingView.xaml?type=one&obj=Course&str="+course.Id, UriKind.Relative));
         }
+
+        private void Testing_Click(object sender, EventArgs e)
+        {
+            var ids = new int[CourseList.SelectedItems.Count];
+            for (int i = 0; i < CourseList.SelectedItems.Count; i++)
+            {
+                ids[i] = (CourseList.SelectedItems[i] as Course).Id;
+            }
+            NavigationService.Navigate(new Uri("/View/TestingView.xaml?type=many&obj=Course&str=" + String.Join(" ", ids), UriKind.Relative));
+        }
     }
 }

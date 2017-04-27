@@ -19,5 +19,8 @@ namespace Testing_3.Model
 
         [ManyToOne]
         public Module Module { get; set; }
+
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<Question> Questions { get; set; }
     }
 }
