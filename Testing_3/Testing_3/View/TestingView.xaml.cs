@@ -20,5 +20,14 @@ namespace Testing_3.View
         {
             InitializeComponent();
         }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            NavigationContext.QueryString.TryGetValue("type", out type);
+            NavigationContext.QueryString.TryGetValue("obj", out obj);
+            NavigationContext.QueryString.TryGetValue("str", out str);
+
+            questionText.Text = type + obj + str;
+        }
     }
 }

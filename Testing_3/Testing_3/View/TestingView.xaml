@@ -40,7 +40,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="question" Grid.Row="0" TextWrapping="Wrap"/>
+            <TextBlock Name="questionText" Text="questionText" Grid.Row="0" TextWrapping="Wrap"/>
             <ListBox Grid.Row="1" Name="Answers" />
             <Button Grid.Row="2" Content="Наступне" Name="NextQuestion"/>
 
