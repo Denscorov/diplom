@@ -14,16 +14,11 @@ namespace Testing_3.View
 {
     public partial class TestingView : PhoneApplicationPage
     {
-        int index = 0;
-        int trueAnswers = 0;
+        QuestionViewModel questionVM;
+
         string type = "";
         string obj = "";
         string str = "";
-
-        List<Question> EquivalentQuestion = new List<Question>();
-        List<Answer> ans = new List<Answer>();
-
-        QuestionViewModel questionVM;
 
         public TestingView()
         {
@@ -33,6 +28,7 @@ namespace Testing_3.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
             NavigationContext.QueryString.TryGetValue("type", out type);
             NavigationContext.QueryString.TryGetValue("obj", out obj);
             NavigationContext.QueryString.TryGetValue("str", out str);
@@ -54,7 +50,6 @@ namespace Testing_3.View
                         default:
                             break;
                     }
-                    SetQuestion();
                     break;
                 case "many":
                     switch (obj)
@@ -71,57 +66,10 @@ namespace Testing_3.View
                         default:
                             break;
                     }
-                    SetQuestion();
                     break;
                 default:
                     break;
             }
-        }
-
-        public void SetQuestion()
-        {
-            if (index < questionVM.Entities.Count)
-            {
-                Question question = questionVM.Entities[index];
-                if (!EquivalentQuestion.Contains(question))
-                {
-                    EquivalentQuestion.AddRange(question.EquivalentQuestion);
-                    questionText.Text = question.Text;
-                    questionAnswers.ItemsSource = question.Answers;
-                    switch (question.Type)
-                    {
-                        case 0:
-                            questionAnswers.ItemTemplate = Resources["TypeQuestion0"] as DataTemplate;
-                            break;
-                        case 1:
-                            questionAnswers.ItemTemplate = Resources["TypeQuestion1"] as DataTemplate;
-                            break;
-                        case 2:
-                            questionAnswers.ItemTemplate = Resources["TypeQuestion2"] as DataTemplate;
-                            break;
-                    }
-                    ans = question.Answers;
-                    ans.ForEach(a => a.Corect = false);
-                    questionAnswers.ItemsSource = ans;
-                }
-                index++;
-            }
-        }
-
-        public void UpdateNumber()
-        {
-            QuestionNumber.Text = index.ToString();
-        }
-
-        public void AddTrueAnswer()
-        {
-            trueAnswers++;
-        }
-        List<object> a;
-        private void NextQuestion_Click(object sender, RoutedEventArgs e)
-        {
-            SetQuestion();
-            a = questionAnswers.Items.ToList();
         }
     }
 }

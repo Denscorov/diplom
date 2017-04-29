@@ -15,19 +15,21 @@
 
     <phone:PhoneApplicationPage.Resources>
         <DataTemplate x:Key="TypeQuestion0">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding Corect}" Content="{Binding Text}"/>
-            </StackPanel>
+            <TextBlock Text="{Binding Text}"/>
+            <!--<StackPanel Orientation="Horizontal">
+                <CheckBox  Content="{Binding Text}" IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor},
+                                         Path=IsSelected}"/>
+            </StackPanel>-->
         </DataTemplate>
         <DataTemplate x:Key="TypeQuestion1">
-            <StackPanel Orientation="Horizontal">
-                <RadioButton IsChecked="{Binding Corect}" GroupName="Single" Content="{Binding Text}"/>
-            </StackPanel>
+            <TextBlock Text="{Binding Text}"/>
+            <!--<StackPanel Orientation="Horizontal">
+                <RadioButton IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor},
+                                         Path=IsSelected}" GroupName="Single" Content="{Binding Text}"/>
+            </StackPanel>-->
         </DataTemplate>
         <DataTemplate x:Key="TypeQuestion2">
-            <StackPanel Orientation="Horizontal">
-                <TextBox />
-            </StackPanel>
+                <TextBox Text="Enter text" />
         </DataTemplate>
     </phone:PhoneApplicationPage.Resources>
     
@@ -39,7 +41,6 @@
 
         <StackPanel Grid.Row="0" Style="{StaticResource TitleBlock}">
             <TextBlock Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.ApplicationTitle}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#fff"/>
-            <!--<TextBlock Text="{Binding Source={StaticResource LocalizedStrings} ,Path=LocalizedResources.ThemesList}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#fff"/>-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Padding="20 0" Foreground="#fff">
                     <Run Text="Питання: "/>
@@ -58,12 +59,11 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Name="questionText" Text="questionText" Grid.Row="0" TextWrapping="Wrap"/>
-            <ListBox Grid.Row="1" Name="questionAnswers" ItemsSource="{Binding}" />
-            <Button Grid.Row="2" Content="Наступне" Name="NextQuestion" Click="NextQuestion_Click"/>
-
+            <TextBlock Name="questionText" Text="questionText" Grid.Row="0" TextWrapping="Wrap" FontSize="32" Padding="12 0" TextAlignment="Center"/>
+            <ListBox Grid.Row="1" Name="questionAnswers" ItemsSource="{Binding}" Margin="12 10"/>
+            <TextBox Grid.Row="1" Visibility="Collapsed" Name="TextAnswer" TextWrapping="Wrap" MaxHeight="150" Height="150"/>
+            <Button Grid.Row="2" Content="Наступне питання" Name="NextQuestion"/>
         </Grid>
-            
     </Grid>
 
 </phone:PhoneApplicationPage>
