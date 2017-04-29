@@ -15,18 +15,16 @@
 
     <phone:PhoneApplicationPage.Resources>
         <DataTemplate x:Key="TypeQuestion0">
-            <TextBlock Text="{Binding Text}"/>
-            <!--<StackPanel Orientation="Horizontal">
-                <CheckBox  Content="{Binding Text}" IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor},
-                                         Path=IsSelected}"/>
-            </StackPanel>-->
+            <StackPanel Orientation="Horizontal">
+                <CheckBox  Content="" IsChecked="{Binding IsSelected}"/>
+                <TextBlock Text="{Binding Text}"/>
+            </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="TypeQuestion1">
-            <TextBlock Text="{Binding Text}"/>
-            <!--<StackPanel Orientation="Horizontal">
-                <RadioButton IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor},
-                                         Path=IsSelected}" GroupName="Single" Content="{Binding Text}"/>
-            </StackPanel>-->
+            <StackPanel Orientation="Horizontal">
+                <RadioButton IsChecked="{Binding IsSelected}" GroupName="Single" Content=""/>
+                <TextBlock Text="{Binding Text}"/>
+            </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="TypeQuestion2">
                 <TextBox Text="Enter text" />
@@ -44,11 +42,11 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBlock Padding="20 0" Foreground="#fff">
                     <Run Text="Питання: "/>
-                    <Run x:Name="QuestionNumber" Text="0"/>
+                    <Run x:Name="QuestionNumber" Text="{Binding NumberQuestion}"/>
                 </TextBlock>
                 <TextBlock Padding="20 0" Foreground="#fff">
                     <Run Text="Вірно: "/>
-                    <Run x:Name="TrueQuestionNumber" Text="0"/>
+                    <Run x:Name="TrueQuestionNumber" Text="{Binding TrueQuestion}"/>
                 </TextBlock>
             </StackPanel>
         </StackPanel>
@@ -59,10 +57,10 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Name="questionText" Text="questionText" Grid.Row="0" TextWrapping="Wrap" FontSize="32" Padding="12 0" TextAlignment="Center"/>
-            <ListBox Grid.Row="1" Name="questionAnswers" ItemsSource="{Binding}" Margin="12 10"/>
-            <TextBox Grid.Row="1" Visibility="Collapsed" Name="TextAnswer" TextWrapping="Wrap" MaxHeight="150" Height="150"/>
-            <Button Grid.Row="2" Content="Наступне питання" Name="NextQuestion"/>
+            <TextBlock Name="questionText" Text="{Binding CurentQuestion.Text}" Grid.Row="0" TextWrapping="Wrap" FontSize="32" Padding="12 0" TextAlignment="Center"/>
+            <ListBox Grid.Row="1" Name="questionAnswers" ItemsSource="{Binding CurentQuestion.Answers}" Margin="20 10"/>
+            <TextBox Grid.Row="1" Visibility="Collapsed" Name="TextAnswer" TextWrapping="Wrap" MaxHeight="150" Height="150" Text="Enter text"/>
+            <Button Grid.Row="2" Content="Наступне питання" Name="NextQuestion" Click="NextQuestion_Click"/>
         </Grid>
     </Grid>
 
