@@ -300,9 +300,6 @@
     <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\Tiles\IconicTileSmall.png">
       <PackagePath>Assets\Tiles\IconicTileSmall.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\README_FIRST.txt">
-      <PackagePath>README_FIRST.txt</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\test.db">
       <PackagePath>test.db</PackagePath>
     </AppxPackagedFile>

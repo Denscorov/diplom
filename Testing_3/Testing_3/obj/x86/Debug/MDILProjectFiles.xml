@@ -3,7 +3,6 @@
   <XAPFiles>
     <File>resources.pri</File>
     <File>Testing_3.dll</File>
-    <File>README_FIRST.txt</File>
     <File>Toolkit.Content\ApplicationBar.Add.png</File>
     <File>Toolkit.Content\ApplicationBar.Cancel.png</File>
     <File>Toolkit.Content\ApplicationBar.Check.png</File>

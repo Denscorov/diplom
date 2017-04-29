@@ -27,7 +27,7 @@
                                 <GradientStop Offset="1" Color="#79BD8F" />
                             </LinearGradientBrush>
                         </toolkit:ContextMenu.Background>
-                        <toolkit:MenuItem Header="Почати тестування" Name="start_testing"/>
+                        <toolkit:MenuItem Header="Почати тестування" Name="start_testing" Click="start_testing_Click"/>
                         <toolkit:MenuItem Header="Переглянути теми" Name="show_themes" Click="show_themes_Click"/>
                     </toolkit:ContextMenu>
                 </toolkit:ContextMenuService.ContextMenu>
@@ -55,7 +55,7 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="#017b67" ForegroundColor="#fff">
             <shell:ApplicationBar.Buttons>
-                <shell:ApplicationBarIconButton Text="тестування" IconUri="/Assets/AppBar/check.png" IsEnabled="False" />
+                <shell:ApplicationBarIconButton Text="тестування" IconUri="/Assets/AppBar/check.png" IsEnabled="False" x:Name="Testing" Click="Testing_Click" />
             </shell:ApplicationBar.Buttons>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="Переглянути теми" x:Name="show_themes_bar" Click="show_themes_bar_Click"/>

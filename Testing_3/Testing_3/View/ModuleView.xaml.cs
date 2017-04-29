@@ -78,5 +78,22 @@ namespace Testing_3.View
             }
             NavigationService.Navigate(new Uri("/View/ThemeView.xaml?type=many&str=" + String.Join(" ", ids), UriKind.Relative));
         }
+
+        private void Testing_Click(object sender, EventArgs e)
+        {
+            var ids = new int[ModuleList.SelectedItems.Count];
+            for (int i = 0; i < ModuleList.SelectedItems.Count; i++)
+            {
+                ids[i] = (ModuleList.SelectedItems[i] as Module).Id;
+            }
+            NavigationService.Navigate(new Uri("/View/TestingView.xaml?obj=Module&str=" + String.Join(" ", ids), UriKind.Relative));
+        }
+
+        private void start_testing_Click(object sender, RoutedEventArgs e)
+        {
+            var item = sender as MenuItem;
+            var module = item.DataContext as Module;
+            NavigationService.Navigate(new Uri("/View/TestingView.xaml?obj=Module&str=" + module.Id, UriKind.Relative));
+        }
     }
 }

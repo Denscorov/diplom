@@ -19,20 +19,20 @@ namespace Testing_3.VIewModel
 
        
 
-        public void GetQuestionsByCourseId(int id)
-        {
-            var modules = database.GetAllWithChildren<Module>(m => m.CourseId == id, true);
-            List<Question> q = new List<Question>();
-            foreach (var module in modules)
-            {
-                foreach (var theme in module.Themes)
-                {
-                    q.AddRange(theme.Questions);
-                }
-            }
-            Shuffle(q);
-            Entities = new ObservableCollection<Question>(q);
-        }
+        //public void GetQuestionsByCourseId(int id)
+        //{
+        //    var modules = database.GetAllWithChildren<Module>(m => m.CourseId == id, true);
+        //    List<Question> q = new List<Question>();
+        //    foreach (var module in modules)
+        //    {
+        //        foreach (var theme in module.Themes)
+        //        {
+        //            q.AddRange(theme.Questions);
+        //        }
+        //    }
+        //    Shuffle(q);
+        //    Entities = new ObservableCollection<Question>(q);
+        //}
 
         public void GetQuestionsByCoursesId(int[] ids)
         {
@@ -49,17 +49,17 @@ namespace Testing_3.VIewModel
             Entities = new ObservableCollection<Question>(q);
         }
 
-        public void GetQuestionsByModuleId(int id)
-        {
-            var themes = database.GetAllWithChildren<Theme>(t => t.ModuleId == id);
-            List<Question> q = new List<Question>();
-            foreach (var theme in themes)
-            {
-                q.AddRange(theme.Questions);
-            }
-            Shuffle(q);
-            Entities = new ObservableCollection<Question>(q);
-        }
+        //public void GetQuestionsByModuleId(int id)
+        //{
+        //    var themes = database.GetAllWithChildren<Theme>(t => t.ModuleId == id);
+        //    List<Question> q = new List<Question>();
+        //    foreach (var theme in themes)
+        //    {
+        //        q.AddRange(theme.Questions);
+        //    }
+        //    Shuffle(q);
+        //    Entities = new ObservableCollection<Question>(q);
+        //}
 
         public void GetQuestionsByModulesId(int[] ids)
         {
@@ -73,17 +73,17 @@ namespace Testing_3.VIewModel
             Entities = new ObservableCollection<Question>(q);
         }
 
-        public void GetQuestionsByThemeId(int id)
-        {
-            var themes = database.GetAllWithChildren<Theme>(t => t.Id == id);
-            List<Question> q = new List<Question>();
-            foreach (var theme in themes)
-            {
-                q.AddRange(theme.Questions);
-            }
-            Shuffle(q);
-            Entities = new ObservableCollection<Question>(q);
-        }
+        //public void GetQuestionsByThemeId(int id)
+        //{
+        //    var themes = database.GetAllWithChildren<Theme>(t => t.Id == id);
+        //    List<Question> q = new List<Question>();
+        //    foreach (var theme in themes)
+        //    {
+        //        q.AddRange(theme.Questions);
+        //    }
+        //    Shuffle(q);
+        //    Entities = new ObservableCollection<Question>(q);
+        //}
 
         public void GetQuestionsByThemesId(int[] ids)
         {

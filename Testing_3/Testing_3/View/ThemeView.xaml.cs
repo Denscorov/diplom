@@ -49,5 +49,34 @@ namespace Testing_3.View
         {
             ThemeList.SelectedIndex = -1;
         }
+
+        private void start_testing_Click(object sender, RoutedEventArgs e)
+        {
+            var item = sender as MenuItem;
+            var theme = item.DataContext as Theme;
+            NavigationService.Navigate(new Uri("/View/TestingView.xaml?obj=Theme&str=" + theme.Id, UriKind.Relative));
+        }
+
+        private void testing_Click(object sender, EventArgs e)
+        {
+            var ids = new int[ThemeList.SelectedItems.Count];
+            for (int i = 0; i < ThemeList.SelectedItems.Count; i++)
+            {
+                ids[i] = (ThemeList.SelectedItems[i] as Theme).Id;
+            }
+            NavigationService.Navigate(new Uri("/View/TestingView.xaml?obj=Theme&str=" + String.Join(" ", ids), UriKind.Relative));
+        }
+
+        private void ThemeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ThemeList.SelectedItems.Count > 0)
+            {
+                (ApplicationBar.Buttons[0] as ApplicationBarIconButton).IsEnabled = true;
+            }
+            else
+            {
+                (ApplicationBar.Buttons[0] as ApplicationBarIconButton).IsEnabled = false;
+            }
+        }
     }
 }

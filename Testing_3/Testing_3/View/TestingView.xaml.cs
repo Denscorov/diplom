@@ -33,43 +33,22 @@ namespace Testing_3.View
             NavigationContext.QueryString.TryGetValue("obj", out obj);
             NavigationContext.QueryString.TryGetValue("str", out str);
 
-            switch (type)
+            switch (obj)
             {
-                case "one":
-                    switch (obj)
-                    {
-                        case "Course":
-                            questionVM.GetQuestionsByCourseId(int.Parse(str));
-                            break;
-                        case "Module":
-                            questionVM.GetQuestionsByModuleId(int.Parse(str));
-                            break;
-                        case "Theme":
-                            questionVM.GetQuestionsByThemeId(int.Parse(str));
-                            break;
-                        default:
-                            break;
-                    }
+                case "Course":
+                    questionVM.GetQuestionsByCoursesId(str.Split(' ').Select(int.Parse).ToArray());
                     break;
-                case "many":
-                    switch (obj)
-                    {
-                        case "Course":
-                            questionVM.GetQuestionsByCoursesId(str.Split(' ').Select(int.Parse).ToArray());
-                            break;
-                        case "Module":
-                            questionVM.GetQuestionsByModulesId(str.Split(' ').Select(int.Parse).ToArray());
-                            break;
-                        case "Theme":
-                            questionVM.GetQuestionsByThemesId(str.Split(' ').Select(int.Parse).ToArray());
-                            break;
-                        default:
-                            break;
-                    }
+                case "Module":
+                    questionVM.GetQuestionsByModulesId(str.Split(' ').Select(int.Parse).ToArray());
+                    break;
+                case "Theme":
+                    questionVM.GetQuestionsByThemesId(str.Split(' ').Select(int.Parse).ToArray());
                     break;
                 default:
                     break;
             }
+
+            questionText.Text = questionVM.Entities.Count.ToString();
         }
     }
 }
