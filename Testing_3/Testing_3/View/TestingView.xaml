@@ -14,21 +14,150 @@
     shell:SystemTray.IsVisible="False">
 
     <phone:PhoneApplicationPage.Resources>
-        <DataTemplate x:Key="TypeQuestion0">
-            <StackPanel Orientation="Horizontal">
-                <CheckBox  Content="" IsChecked="{Binding IsSelected}"/>
+        <DataTemplate x:Key="AnswerTemplate">
+            <StackPanel>
                 <TextBlock Text="{Binding Text}"/>
             </StackPanel>
         </DataTemplate>
-        <DataTemplate x:Key="TypeQuestion1">
-            <StackPanel Orientation="Horizontal">
-                <RadioButton IsChecked="{Binding IsSelected}" GroupName="Single" Content=""/>
-                <TextBlock Text="{Binding Text}"/>
-            </StackPanel>
-        </DataTemplate>
-        <DataTemplate x:Key="TypeQuestion2">
-                <TextBox Text="Enter text" />
-        </DataTemplate>
+        
+        <Style x:Key="ListBoxItemStyle1" TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="BorderThickness" Value="0 0 0 1"/>
+            <Setter Property="BorderBrush" Value="#BEEB9F"/>
+            <Setter Property="Padding" Value="12 10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="LayoutRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="LayoutRoot">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimation Duration="0" To=".5" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ContentContainer"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames
+                                                Storyboard.TargetName="ContentContainer"
+                                                Storyboard.TargetProperty="Foreground"
+                                                Duration="0">
+                                                <DiscreteObjectKeyFrame  KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <SolidColorBrush Color="White"/>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames
+                                                Storyboard.TargetName="border"
+                                                Storyboard.TargetProperty="Background"
+                                                Duration="0">
+                                                <DiscreteObjectKeyFrame  KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <SolidColorBrush Color="#00A388"/>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+
+                            </VisualStateManager.VisualStateGroups>
+                            <StackPanel x:Name="border" Orientation="Horizontal">
+                                <CheckBox x:Name="checkBox" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, 
+                                    Path=IsSelected, Mode=TwoWay}" DataContext="{TemplateBinding
+                                    IsSelected}" Visibility="Visible"
+                                    HorizontalContentAlignment="{TemplateBinding
+                                    HorizontalContentAlignment}"/>
+                                <ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    Content="{TemplateBinding Content}" Foreground="{TemplateBinding
+                                    Foreground}" HorizontalContentAlignment="{TemplateBinding
+                                    HorizontalContentAlignment}" Padding="{TemplateBinding Padding}"
+                                    VerticalContentAlignment="{TemplateBinding
+                                    VerticalContentAlignment}"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ListBoxItemStyle2" TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="BorderThickness" Value="0 0 0 1"/>
+            <Setter Property="BorderBrush" Value="#BEEB9F"/>
+            <Setter Property="Padding" Value="12 10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="LayoutRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="LayoutRoot">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimation Duration="0" To=".5" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ContentContainer"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames
+                                                Storyboard.TargetName="ContentContainer"
+                                                Storyboard.TargetProperty="Foreground"
+                                                Duration="0">
+                                                <DiscreteObjectKeyFrame  KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <SolidColorBrush Color="White"/>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames
+                                                Storyboard.TargetName="border"
+                                                Storyboard.TargetProperty="Background"
+                                                Duration="0">
+                                                <DiscreteObjectKeyFrame  KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <SolidColorBrush Color="#00A388"/>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+
+                            </VisualStateManager.VisualStateGroups>
+                            <StackPanel x:Name="border" Orientation="Horizontal">
+                                <RadioButton GroupName="list" x:Name="checkBox" IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, 
+                                    Path=IsSelected, Mode=TwoWay}" DataContext="{TemplateBinding
+                                    IsSelected}" Visibility="Visible"
+                                    HorizontalContentAlignment="{TemplateBinding
+                                    HorizontalContentAlignment}"/>
+                                <ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                    Content="{TemplateBinding Content}" Foreground="{TemplateBinding
+                                    Foreground}" HorizontalContentAlignment="{TemplateBinding
+                                    HorizontalContentAlignment}" Padding="{TemplateBinding Padding}"
+                                    VerticalContentAlignment="{TemplateBinding
+                                    VerticalContentAlignment}"/>
+                            </StackPanel>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </phone:PhoneApplicationPage.Resources>
     
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -58,10 +187,13 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <TextBlock Name="questionText" Text="{Binding CurentQuestion.Text}" Grid.Row="0" TextWrapping="Wrap" FontSize="32" Padding="12 0" TextAlignment="Center"/>
-            <ListBox Grid.Row="1" Name="questionAnswers" ItemsSource="{Binding CurentQuestion.Answers}" Margin="20 10"/>
+            <ListBox Grid.Row="1" Name="questionAnswers" SelectionMode="Multiple" ItemsSource="{Binding CurentQuestion.Answers}" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" ItemTemplate="{StaticResource AnswerTemplate}" Margin="20 10"/>
             <TextBox Grid.Row="1" Visibility="Collapsed" Name="TextAnswer" TextWrapping="Wrap" MaxHeight="150" Height="150" Text="Enter text"/>
             <Button Grid.Row="2" Content="Наступне питання" Name="NextQuestion" Click="NextQuestion_Click"/>
         </Grid>
     </Grid>
 
 </phone:PhoneApplicationPage>
+
+<!--{Binding Converter={StaticResource
+                                    BooleanToVisibilityConverter}}-->

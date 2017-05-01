@@ -11,6 +11,7 @@ using Testing_3.VIewModel;
 using Testing_3.Model;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Testing_3.CompareString;
 
 namespace Testing_3.View
 {
@@ -23,10 +24,6 @@ namespace Testing_3.View
         string str = "";
 
         QuestionNotify qNotify;
-        //int index = 0;
-
-        //public int qNumber = 0;
-        //public int trueQuestion = 0;
 
         public TestingView()
         {
@@ -58,74 +55,64 @@ namespace Testing_3.View
 
             qNotify = new QuestionNotify(questionVM.Entities.ToArray());
             DataContext = qNotify;
-            
+            ViewQuestion();
         }
-
-        //public void SetQuestion()
-        //{
-        //    if (index <= questionVM.Entities.Count - 1)
-        //    {
-        //        Question question = questionVM.Entities[index];
-        //        questionText.Text = question.Text;
-
-        //        switch (question.Type)
-        //        {
-        //            case 0:
-        //                HideTextAnswer();
-        //                questionAnswers.ItemTemplate = Resources["TypeQuestion0"] as DataTemplate;
-        //                break;
-        //            case 1:
-        //                HideTextAnswer();
-        //                questionAnswers.ItemTemplate = Resources["TypeQuestion1"] as DataTemplate;
-        //                break;
-        //            case 2:
-        //                ShowTextAnswer();
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //        questionAnswers.ItemsSource = question.Answers;
-        //        index++;
-        //        qNumber++;
-        //        UpdateQNumber();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Тест завершено");
-        //    }
-        //}
 
         private void NextQuestion_Click(object sender, RoutedEventArgs e)
         {
-            //SetQuestion();
+            
+            switch (qNotify.CurentQuestion.Type)
+            {
+                case 0:
+                    Answer[] l = new Answer[questionAnswers.SelectedItems.Count];
+                    questionAnswers.SelectedItems.CopyTo(l, 0);
+                    qNotify.NextQuestion(l);
+                    ViewQuestion();
+                    break;
+                case 1:
+                    qNotify.NextQuestion(questionAnswers.SelectedItem as Answer);
+                    ViewQuestion();
+                    break;
+                case 2:
+                    qNotify.NextQuestion(TextAnswer.Text);
+                    ViewQuestion();
+                    break;
+            }
         }
 
-        //private void ShowTextAnswer()
-        //{
-        //    questionAnswers.Visibility = Visibility.Collapsed;
-        //    TextAnswer.Visibility = Visibility.Visible;
-        //}
+        private void ViewQuestion()
+        {
+            switch (qNotify.CurentQuestion.Type)
+            {
+                case 0:
+                    questionAnswers.ItemContainerStyle = Resources["ListBoxItemStyle1"] as Style;
+                    HideTextBoxAnswer();
+                    break;
+                case 1:
+                    questionAnswers.ItemContainerStyle = Resources["ListBoxItemStyle2"] as Style;
+                    HideTextBoxAnswer();
+                    break;
+                case 2:
+                    ShowTextBoxAnswer();
+                    break;
+            }
+        }
 
-        //private void HideTextAnswer()
-        //{
-        //    questionAnswers.Visibility = Visibility.Visible;
-        //    TextAnswer.Visibility = Visibility.Collapsed;
-        //}
+        private void ShowTextBoxAnswer()
+        {
+            questionAnswers.Visibility = Visibility.Collapsed;
+            TextAnswer.Visibility = Visibility.Visible;
+        }
 
-        //public void UpdateQNumber()
-        //{
-        //    QuestionNumber.Text = qNumber.ToString();
-        //}
-
-        //public void UpdateTrueQuestion()
-        //{
-        //    TrueQuestionNumber.Text = trueQuestion.ToString();
-        //}
+        private void HideTextBoxAnswer()
+        {
+            questionAnswers.Visibility = Visibility.Visible;
+            TextAnswer.Visibility = Visibility.Collapsed;
+        }
     }
 
     class QuestionNotify : INotifyPropertyChanged
     {
-        int index = 0;
         int trueQuestion = 0;
         public int TrueQuestion
         {
@@ -174,8 +161,68 @@ namespace Testing_3.View
         public QuestionNotify(Question[] questions)
         {
             this.questions = questions;
-            CurentQuestion = questions[index];
+            CurentQuestion = questions[NumberQuestion];
             NumberQuestion++;
+        }
+
+        public bool NextQuestion(string textAnswer)
+        {
+            if (CurentQuestion.Answers.Count > 0)
+            {
+                var i = ScoreSharp.score(CurentQuestion.Answers[0].Text, textAnswer);
+            }
+
+            if (NumberQuestion < questions.Count() - 1)
+            {
+                CurentQuestion = questions[NumberQuestion++];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool NextQuestion(Answer answer)
+        {
+            foreach (var ans in CurentQuestion.Answers)
+            {
+                if (ans.Corect && ans.Id == answer.Id)
+                {
+                    TrueQuestion++;
+                }
+            }
+
+            if (NumberQuestion < questions.Count() - 1)
+            {
+                CurentQuestion = questions[NumberQuestion++];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool NextQuestion(Answer[] answers)
+        {
+            var i = CurentQuestion.Answers.Where(a => a.Corect).Count();
+            var j = answers.Where(a => a.Corect == true).Count();
+
+            if (i != 0 && j != 0 && i == j)
+            {
+                TrueQuestion++;
+            }
+
+            if (NumberQuestion < questions.Count() - 1)
+            {
+                CurentQuestion = questions[NumberQuestion++];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

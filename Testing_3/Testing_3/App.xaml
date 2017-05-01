@@ -6,7 +6,6 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:local="clr-namespace:Testing_3">
 
-    <!--Ресурсы приложения-->
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:Testing_3" x:Key="LocalizedStrings"/>
         <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
@@ -84,7 +83,6 @@
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
-        <!--Обязательный объект, обрабатывающий события времени жизни приложения-->
         <shell:PhoneApplicationService
             Launching="Application_Launching" Closing="Application_Closing"
             Activated="Application_Activated" Deactivated="Application_Deactivated"/>
