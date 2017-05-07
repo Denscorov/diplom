@@ -19,7 +19,7 @@
         <DataTemplate x:Key="ModuleTemplate">
             <StackPanel>
                 <TextBlock Text="{Binding Name}"/>
-                <toolkit:ContextMenuService.ContextMenu>
+                <!--<toolkit:ContextMenuService.ContextMenu>
                     <toolkit:ContextMenu BorderBrush="#fff" BorderThickness="0 0 0 1">
                         <toolkit:ContextMenu.Background>
                             <LinearGradientBrush>
@@ -30,7 +30,7 @@
                         <toolkit:MenuItem Header="Почати тестування" Name="start_testing" Click="start_testing_Click"/>
                         <toolkit:MenuItem Header="Переглянути теми" Name="show_themes" Click="show_themes_Click"/>
                     </toolkit:ContextMenu>
-                </toolkit:ContextMenuService.ContextMenu>
+                </toolkit:ContextMenuService.ContextMenu>-->
             </StackPanel>
         </DataTemplate>
         <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
@@ -48,19 +48,18 @@
             <TextBlock Text="{Binding Source={StaticResource LocalizedStrings} ,Path=LocalizedResources.ModulesList}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#fff"/>
         </StackPanel>
 
-        <ListBox Name="ModuleList" ItemsSource="{Binding Entities}" ItemTemplate="{StaticResource ModuleTemplate}" SelectionMode="Multiple" Margin="12 6" Grid.Row="1" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" SelectionChanged="ModuleList_SelectionChanged"/>
+        <!--<ListBox Name="ModuleList" ItemsSource="{Binding Entities}" ItemTemplate="{StaticResource ModuleTemplate}" SelectionMode="Multiple" Margin="12 6" Grid.Row="1" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" SelectionChanged="ModuleList_SelectionChanged"/>-->
+        <toolkit:LongListMultiSelector SelectionChanged="ModuleList_SelectionChanged" Name="ModuleList" ItemsSource="{Binding Entities}" ItemTemplate="{StaticResource ModuleTemplate}" Margin="12 10" Grid.Row="1"/>
 
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="#017b67" ForegroundColor="#fff">
             <shell:ApplicationBar.Buttons>
-                <shell:ApplicationBarIconButton Text="тестування" IconUri="/Assets/AppBar/check.png" IsEnabled="False" x:Name="Testing" Click="Testing_Click" />
+                <shell:ApplicationBarIconButton Text="вибрати" IconUri="/Toolkit.Content/ApplicationBar.Select.png" x:Name="select" Click="select_Click"/>
             </shell:ApplicationBar.Buttons>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="Переглянути теми" x:Name="show_themes_bar" Click="show_themes_bar_Click"/>
-                <shell:ApplicationBarMenuItem Text="Виділити всі" x:Name="select_all" Click="select_all_Click"/>
-                <shell:ApplicationBarMenuItem Text="Відмінити виділення" x:Name="unselect" Click="unselect_Click"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

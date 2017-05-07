@@ -25,7 +25,9 @@ namespace Testing_3.Model
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Answer> Answers { get; set; }
 
-        [ManyToMany(typeof(EquivalentQuestion), "EquivalentQuestionId", null, CascadeOperations = CascadeOperation.All, ReadOnly = false)]
-        public List<Question> EquivalentQuestion { set; get;} 
+        [ManyToMany(typeof(EquivalentQuestion), "EquivalentQuestionId", "EquivalentQuestion", CascadeOperations = CascadeOperation.All)]
+        public List<Question> EquilentParent { get; set; }
+        [ManyToMany(typeof(EquivalentQuestion), "QuestionId", "EquilentParent", CascadeOperations = CascadeOperation.All)]
+        public List<Question> EquivalentQuestion { get; set; }
     }
 }

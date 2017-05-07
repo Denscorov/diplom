@@ -141,6 +141,8 @@ namespace Testing_3.View
             }
         }
 
+        int index = 0;
+
         Question[] questions;
 
         Question curentQuestion;
@@ -149,8 +151,16 @@ namespace Testing_3.View
         {
             set
             {
-                curentQuestion = value;
-                NotifyPropertyChanged();
+                if (!EquivalentQuestion.Contains(value))
+                {
+                    curentQuestion = value;
+                    EquivalentQuestion.AddRange(CurentQuestion.EquivalentQuestion);
+                    NotifyPropertyChanged();
+                }
+                else
+                {
+                    SkipQuestion();
+                }
             }
             get
             {
@@ -158,11 +168,15 @@ namespace Testing_3.View
             }
         }
 
+        List<Question> EquivalentQuestion;
+
         public QuestionNotify(Question[] questions)
         {
+            EquivalentQuestion = new List<Question>();
             this.questions = questions;
-            CurentQuestion = questions[NumberQuestion];
+            CurentQuestion = questions[index];
             NumberQuestion++;
+            index++;
         }
 
         public bool NextQuestion(string textAnswer)
@@ -174,7 +188,8 @@ namespace Testing_3.View
 
             if (NumberQuestion < questions.Count() - 1)
             {
-                CurentQuestion = questions[NumberQuestion++];
+                CurentQuestion = questions[index++];
+                NumberQuestion++;
                 return true;
             }
             else
@@ -195,7 +210,8 @@ namespace Testing_3.View
 
             if (NumberQuestion < questions.Count() - 1)
             {
-                CurentQuestion = questions[NumberQuestion++];
+                CurentQuestion = questions[index++];
+                NumberQuestion++;
                 return true;
             }
             else
@@ -216,13 +232,19 @@ namespace Testing_3.View
 
             if (NumberQuestion < questions.Count() - 1)
             {
-                CurentQuestion = questions[NumberQuestion++];
+                CurentQuestion = questions[index++];
+                NumberQuestion++;
                 return true;
             }
             else
             {
                 return false;
             }
+        }
+
+        public void SkipQuestion()
+        {
+            CurentQuestion = questions[index++];
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

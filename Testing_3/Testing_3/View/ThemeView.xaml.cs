@@ -15,6 +15,10 @@ namespace Testing_3.View
     public partial class ThemeView : PhoneApplicationPage
     {
         ThemeViewModel themeVM;
+
+        ApplicationBarIconButton testing = new ApplicationBarIconButton() { IconUri = new Uri("/Assets/AppBar/check.png", UriKind.Relative), IsEnabled = true, Text = "тестування" };
+        ApplicationBarIconButton selected = new ApplicationBarIconButton() { IconUri = new Uri("/Toolkit.Content/ApplicationBar.Select.png", UriKind.Relative), IsEnabled = true, Text = "вибрати" };
+
         string type = "";
         string str = "";
         public ThemeView()
@@ -22,11 +26,12 @@ namespace Testing_3.View
             InitializeComponent();
             themeVM = new ThemeViewModel();
             DataContext = themeVM;
+
+            testing.Click += testing_Click;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ThemeList.SelectedIndex = -1;
             base.OnNavigatedTo(e);
             NavigationContext.QueryString.TryGetValue("type", out type);
             NavigationContext.QueryString.TryGetValue("str", out str);
@@ -38,23 +43,6 @@ namespace Testing_3.View
             {
                 themeVM.GetThemesByModuleId(int.Parse(str));
             }
-        }
-
-        private void select_all_Click(object sender, EventArgs e)
-        {
-            ThemeList.SelectAll();
-        }
-
-        private void unselect_Click(object sender, EventArgs e)
-        {
-            ThemeList.SelectedIndex = -1;
-        }
-
-        private void start_testing_Click(object sender, RoutedEventArgs e)
-        {
-            var item = sender as MenuItem;
-            var theme = item.DataContext as Theme;
-            NavigationService.Navigate(new Uri("/View/TestingView.xaml?obj=Theme&str=" + theme.Id, UriKind.Relative));
         }
 
         private void testing_Click(object sender, EventArgs e)
@@ -71,11 +59,26 @@ namespace Testing_3.View
         {
             if (ThemeList.SelectedItems.Count > 0)
             {
-                (ApplicationBar.Buttons[0] as ApplicationBarIconButton).IsEnabled = true;
+                if (ApplicationBar.Buttons.Count == 1)
+                {
+                    ApplicationBar.Buttons.Insert(1, testing);
+                }
             }
             else
             {
-                (ApplicationBar.Buttons[0] as ApplicationBarIconButton).IsEnabled = false;
+                ApplicationBar.Buttons.RemoveAt(1);
+            }
+        }
+
+        private void select_Click(object sender, EventArgs e)
+        {
+            if (ThemeList.IsSelectionEnabled)
+            {
+                ThemeList.IsSelectionEnabled = false;
+            }
+            else
+            {
+                ThemeList.IsSelectionEnabled = true;
             }
         }
     }

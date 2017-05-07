@@ -16,10 +16,10 @@
     shell:SystemTray.IsVisible="False">
 
     <phone:PhoneApplicationPage.Resources>
-        <DataTemplate x:Key="ModuleTemplate">
+        <DataTemplate x:Key="ThemeTemplate">
             <StackPanel>
                 <TextBlock Text="{Binding Name}"/>
-                <toolkit:ContextMenuService.ContextMenu>
+                <!--<toolkit:ContextMenuService.ContextMenu>
                     <toolkit:ContextMenu BorderBrush="#fff" BorderThickness="0 0 0 1">
                         <toolkit:ContextMenu.Background>
                             <LinearGradientBrush>
@@ -29,7 +29,7 @@
                         </toolkit:ContextMenu.Background>
                         <toolkit:MenuItem Header="Почати тестування" Name="start_testing" Click="start_testing_Click"/>
                     </toolkit:ContextMenu>
-                </toolkit:ContextMenuService.ContextMenu>
+                </toolkit:ContextMenuService.ContextMenu>-->
             </StackPanel>
         </DataTemplate>
         <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
@@ -47,19 +47,16 @@
             <TextBlock Text="{Binding Source={StaticResource LocalizedStrings} ,Path=LocalizedResources.ThemesList}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#fff"/>
         </StackPanel>
 
-        <ListBox Name="ThemeList" ItemsSource="{Binding Entities}" ItemTemplate="{StaticResource ModuleTemplate}" SelectionMode="Multiple" Margin="12 6" Grid.Row="1" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" SelectionChanged="ThemeList_SelectionChanged"/>
+        <!--<ListBox Name="ThemeList" ItemsSource="{Binding Entities}" ItemTemplate="{StaticResource ModuleTemplate}" SelectionMode="Multiple" Margin="12 6" Grid.Row="1" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" SelectionChanged="ThemeList_SelectionChanged"/>-->
+        <toolkit:LongListMultiSelector SelectionChanged="ThemeList_SelectionChanged" Name="ThemeList" ItemsSource="{Binding Entities}" ItemTemplate="{StaticResource ThemeTemplate}" Margin="12 10" Grid.Row="1"/>
 
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="#017b67" ForegroundColor="#fff">
             <shell:ApplicationBar.Buttons>
-                <shell:ApplicationBarIconButton Text="тестування" IconUri="/Assets/AppBar/check.png" IsEnabled="False" x:Name="testing" Click="testing_Click"/>
+                <shell:ApplicationBarIconButton Text="вибрати" IconUri="/Toolkit.Content/ApplicationBar.Select.png" x:Name="select" Click="select_Click"/>
             </shell:ApplicationBar.Buttons>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="Виділити всі" x:Name="select_all" Click="select_all_Click"/>
-                <shell:ApplicationBarMenuItem Text="Відмінити виділення" x:Name="unselect" Click="unselect_Click"/>
-            </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

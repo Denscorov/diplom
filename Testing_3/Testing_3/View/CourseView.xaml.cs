@@ -16,38 +16,31 @@ namespace Testing_3.View
     {
         CourseViewModel courseVM;
 
+        ApplicationBarIconButton testing = new ApplicationBarIconButton() { IconUri = new Uri("/Assets/AppBar/check.png", UriKind.Relative), IsEnabled = true, Text = "тестування" };
+        ApplicationBarIconButton selected = new ApplicationBarIconButton() { IconUri = new Uri("/Toolkit.Content/ApplicationBar.Select.png", UriKind.Relative), IsEnabled = true, Text = "вибрати" };
+
         public CourseView()
         {
             InitializeComponent();
             courseVM = new CourseViewModel();
             courseVM.GetAllCourses();
             DataContext = courseVM;
-        }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            CourseList.SelectedIndex = -1;
-        }
-
-        private void select_all_Click(object sender, EventArgs e)
-        {
-            CourseList.SelectAll();
-        }
-
-        private void unselect_Click(object sender, EventArgs e)
-        {
-            CourseList.SelectedIndex = -1;
+            testing.Click += Testing_Click;
         }
 
         private void CourseList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CourseList.SelectedItems.Count > 0)
             {
-                (ApplicationBar.Buttons[0] as ApplicationBarIconButton).IsEnabled = true;
+                if (ApplicationBar.Buttons.Count == 1)
+                {
+                    ApplicationBar.Buttons.Insert(1, testing);
+                }
             }
             else
             {
-                (ApplicationBar.Buttons[0] as ApplicationBarIconButton).IsEnabled = false;
+                ApplicationBar.Buttons.RemoveAt(1);
             }
         }
 
@@ -61,19 +54,19 @@ namespace Testing_3.View
             NavigationService.Navigate(new Uri("/View/ModuleView.xaml?type=many&str=" + String.Join(" ", ids), UriKind.Relative));
         }
 
-        private void show_modules_Click(object sender, RoutedEventArgs e)
-        {
-            var item = sender as MenuItem;
-            var course = item.DataContext as Course;
-            NavigationService.Navigate(new Uri("/View/ModuleView.xaml?type=one&str=" + course.Id, UriKind.Relative));
-        }
+        //private void show_modules_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var item = sender as MenuItem;
+        //    var course = item.DataContext as Course;
+        //    NavigationService.Navigate(new Uri("/View/ModuleView.xaml?type=one&str=" + course.Id, UriKind.Relative));
+        //}
 
-        private void start_testing_Click(object sender, RoutedEventArgs e)
-        {
-            var item = sender as MenuItem;
-            var course = item.DataContext as Course;
-            NavigationService.Navigate(new Uri("/View/TestingView.xaml?obj=Course&str="+ course.Id, UriKind.Relative));
-        }
+        //private void start_testing_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var item = sender as MenuItem;
+        //    var course = item.DataContext as Course;
+        //    NavigationService.Navigate(new Uri("/View/TestingView.xaml?obj=Course&str="+ course.Id, UriKind.Relative));
+        //}
 
         private void Testing_Click(object sender, EventArgs e)
         {
@@ -83,6 +76,18 @@ namespace Testing_3.View
                 ids[i] = (CourseList.SelectedItems[i] as Course).Id;
             }
             NavigationService.Navigate(new Uri("/View/TestingView.xaml?obj=Course&str=" + String.Join(" ", ids), UriKind.Relative));
+        }
+
+        private void select_Click(object sender, EventArgs e)
+        {
+            if (CourseList.IsSelectionEnabled)
+            {
+                CourseList.IsSelectionEnabled = false;
+            }
+            else
+            {
+                CourseList.IsSelectionEnabled = true;
+            }
         }
     }
 }

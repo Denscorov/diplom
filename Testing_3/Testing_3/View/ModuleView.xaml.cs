@@ -15,6 +15,10 @@ namespace Testing_3.View
     public partial class ModuleView : PhoneApplicationPage
     {
         ModuleViewModel moduleVM;
+
+        ApplicationBarIconButton testing = new ApplicationBarIconButton() { IconUri = new Uri("/Assets/AppBar/check.png", UriKind.Relative), IsEnabled = true, Text = "тестування" };
+        ApplicationBarIconButton selected = new ApplicationBarIconButton() { IconUri = new Uri("/Toolkit.Content/ApplicationBar.Select.png", UriKind.Relative), IsEnabled = true, Text = "вибрати" };
+
         string type = "";
         string str = "";
         public ModuleView()
@@ -22,11 +26,12 @@ namespace Testing_3.View
             InitializeComponent();
             moduleVM = new ModuleViewModel();
             DataContext = moduleVM;
+
+            testing.Click += Testing_Click;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ModuleList.SelectedIndex = -1;
             base.OnNavigatedTo(e);
             NavigationContext.QueryString.TryGetValue("type", out type);
             NavigationContext.QueryString.TryGetValue("str", out str);
@@ -40,33 +45,19 @@ namespace Testing_3.View
             }
         }
 
-        private void select_all_Click(object sender, EventArgs e)
-        {
-            ModuleList.SelectAll();
-        }
-
-        private void unselect_Click(object sender, EventArgs e)
-        {
-            ModuleList.SelectedIndex = -1;
-        }
-
         private void ModuleList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ModuleList.SelectedItems.Count > 0)
             {
-                (ApplicationBar.Buttons[0] as ApplicationBarIconButton).IsEnabled = true;
+                if (ApplicationBar.Buttons.Count == 1)
+                {
+                    ApplicationBar.Buttons.Insert(1, testing);
+                }
             }
             else
             {
-                (ApplicationBar.Buttons[0] as ApplicationBarIconButton).IsEnabled = false;
+                ApplicationBar.Buttons.RemoveAt(1);
             }
-        }
-
-        private void show_themes_Click(object sender, RoutedEventArgs e)
-        {
-            var item = sender as MenuItem;
-            var module = item.DataContext as Module;
-            NavigationService.Navigate(new Uri("/View/ThemeView.xaml?type=one&str=" + module.Id, UriKind.Relative));
         }
 
         private void show_themes_bar_Click(object sender, EventArgs e)
@@ -89,11 +80,16 @@ namespace Testing_3.View
             NavigationService.Navigate(new Uri("/View/TestingView.xaml?obj=Module&str=" + String.Join(" ", ids), UriKind.Relative));
         }
 
-        private void start_testing_Click(object sender, RoutedEventArgs e)
+        private void select_Click(object sender, EventArgs e)
         {
-            var item = sender as MenuItem;
-            var module = item.DataContext as Module;
-            NavigationService.Navigate(new Uri("/View/TestingView.xaml?obj=Module&str=" + module.Id, UriKind.Relative));
+            if (ModuleList.IsSelectionEnabled)
+            {
+                ModuleList.IsSelectionEnabled = false;
+            }
+            else
+            {
+                ModuleList.IsSelectionEnabled = true;
+            }
         }
     }
 }

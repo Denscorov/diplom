@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Testing_3.Model;
 using SQLiteNetExtensions.Extensions;
 
@@ -28,32 +25,24 @@ namespace Testing_3.VIewModel
                     q.AddRange(theme.Questions);
                 }
             }
-            Shuffle(q);
             Entities = new ObservableCollection<Question>(q);
         }
 
         public void GetQuestionsByModulesId(int[] ids)
         {
-            var themes = database.GetAllWithChildren<Theme>(t => ids.Contains(t.ModuleId));
+            var themes = database.GetAllWithChildren<Theme>(t => ids.Contains(t.ModuleId), true);
             List<Question> q = new List<Question>();
             foreach (var theme in themes)
             {
                 q.AddRange(theme.Questions);
             }
-            Shuffle(q);
             Entities = new ObservableCollection<Question>(q);
         }
 
         public void GetQuestionsByThemesId(int[] ids)
         {
-            var themes = database.GetAllWithChildren<Theme>(t => ids.Contains(t.Id));
-            List<Question> q = new List<Question>();
-            foreach (var theme in themes)
-            {
-                q.AddRange(theme.Questions);
-            }
-            Shuffle(q);
-            Entities = new ObservableCollection<Question>(q);
+            var questions = database.GetAllWithChildren<Question>(q => ids.Contains(q.ThemeId), true);
+            Entities = new ObservableCollection<Question>(questions);
         }
     }
 }
