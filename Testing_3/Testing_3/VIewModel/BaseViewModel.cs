@@ -34,7 +34,7 @@ namespace Testing_3.VIewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private static Random rng = new Random();
+        static Random rng = new Random();
 
         public static void Shuffle<T>(IList<T> list)
         {

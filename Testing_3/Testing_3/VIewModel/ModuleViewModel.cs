@@ -12,23 +12,6 @@ namespace Testing_3.VIewModel
 {
     class ModuleViewModel : BaseViewModel<Module>
     {
-        //SQLiteConnection database;
-        //ObservableCollection<Module> modules;
-        //public ObservableCollection<Module> Modules
-        //{
-        //    get
-        //    {
-        //        return modules;
-        //    }
-        //    set
-        //    {
-        //        if (value != modules)
-        //        {
-        //            modules = value;
-        //        }
-        //    }
-        //}
-
         public ModuleViewModel()
         {
             database = DBConnection.GetCoonection();
@@ -49,6 +32,5 @@ namespace Testing_3.VIewModel
         {
             Entities = new ObservableCollection<Module>(database.GetAllWithChildren<Module>(m => ids.Contains(m.CourseId)));
         }
-
     }
 }

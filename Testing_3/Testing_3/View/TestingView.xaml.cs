@@ -20,7 +20,6 @@ namespace Testing_3.View
         QuestionViewModel questionVM;
 
         string type = "";
-        string obj = "";
         string str = "";
 
         QuestionNotify qNotify;
@@ -35,10 +34,9 @@ namespace Testing_3.View
             base.OnNavigatedTo(e);
 
             NavigationContext.QueryString.TryGetValue("type", out type);
-            NavigationContext.QueryString.TryGetValue("obj", out obj);
             NavigationContext.QueryString.TryGetValue("str", out str);
 
-            switch (obj)
+            switch (type)
             {
                 case "Course":
                     questionVM.GetQuestionsByCoursesId(str.Split(' ').Select(int.Parse).ToArray());
@@ -66,15 +64,27 @@ namespace Testing_3.View
                 case 0:
                     Answer[] l = new Answer[questionAnswers.SelectedItems.Count];
                     questionAnswers.SelectedItems.CopyTo(l, 0);
-                    qNotify.NextQuestion(l);
+                    if (!qNotify.NextQuestion(l))
+                    {
+                        TestFinish();
+                        return;
+                    }
                     ViewQuestion();
                     break;
                 case 1:
-                    qNotify.NextQuestion(questionAnswers.SelectedItem as Answer);
+                    if(!qNotify.NextQuestion(questionAnswers.SelectedItem as Answer))
+                    {
+                        TestFinish();
+                        return;
+                    }
                     ViewQuestion();
                     break;
                 case 2:
-                    qNotify.NextQuestion(TextAnswer.Text);
+                    if(!qNotify.NextQuestion(TextAnswer.Text))
+                    {
+                        TestFinish();
+                        return;
+                    }
                     ViewQuestion();
                     break;
             }
@@ -109,149 +119,15 @@ namespace Testing_3.View
             questionAnswers.Visibility = Visibility.Visible;
             TextAnswer.Visibility = Visibility.Collapsed;
         }
-    }
 
-    class QuestionNotify : INotifyPropertyChanged
-    {
-        int trueQuestion = 0;
-        public int TrueQuestion
+        private void TestFinish()
         {
-            set
-            {
-                trueQuestion = value;
-                NotifyPropertyChanged();
-            }
-            get
-            {
-                return trueQuestion;
-            }
-        }
-
-        int numberQuestion = 0;
-        public int NumberQuestion
-        {
-            set
-            {
-                numberQuestion = value;
-                NotifyPropertyChanged();
-            }
-            get
-            {
-                return numberQuestion;
-            }
-        }
-
-        int index = 0;
-
-        Question[] questions;
-
-        Question curentQuestion;
-
-        public Question CurentQuestion
-        {
-            set
-            {
-                if (!EquivalentQuestion.Contains(value))
-                {
-                    curentQuestion = value;
-                    EquivalentQuestion.AddRange(CurentQuestion.EquivalentQuestion);
-                    NotifyPropertyChanged();
-                }
-                else
-                {
-                    SkipQuestion();
-                }
-            }
-            get
-            {
-                return curentQuestion;
-            }
-        }
-
-        List<Question> EquivalentQuestion;
-
-        public QuestionNotify(Question[] questions)
-        {
-            EquivalentQuestion = new List<Question>();
-            this.questions = questions;
-            CurentQuestion = questions[index];
-            NumberQuestion++;
-            index++;
-        }
-
-        public bool NextQuestion(string textAnswer)
-        {
-            if (CurentQuestion.Answers.Count > 0)
-            {
-                var i = ScoreSharp.score(CurentQuestion.Answers[0].Text, textAnswer);
-            }
-
-            if (NumberQuestion < questions.Count() - 1)
-            {
-                CurentQuestion = questions[index++];
-                NumberQuestion++;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool NextQuestion(Answer answer)
-        {
-            foreach (var ans in CurentQuestion.Answers)
-            {
-                if (ans.Corect && ans.Id == answer.Id)
-                {
-                    TrueQuestion++;
-                }
-            }
-
-            if (NumberQuestion < questions.Count() - 1)
-            {
-                CurentQuestion = questions[index++];
-                NumberQuestion++;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool NextQuestion(Answer[] answers)
-        {
-            var i = CurentQuestion.Answers.Where(a => a.Corect).Count();
-            var j = answers.Where(a => a.Corect == true).Count();
-
-            if (i != 0 && j != 0 && i == j)
-            {
-                TrueQuestion++;
-            }
-
-            if (NumberQuestion < questions.Count() - 1)
-            {
-                CurentQuestion = questions[index++];
-                NumberQuestion++;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public void SkipQuestion()
-        {
-            CurentQuestion = questions[index++];
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            MessageBox.Show(String.Format("{0} вірних, з {1} питань",qNotify.TrueQuestion, qNotify.NumberQuestion),"Результат", MessageBoxButton.OK);
+            TestViewModel testVM = new TestViewModel();
+            testVM.AddTest(new Test(type, str, qNotify.NumberQuestion, qNotify.TrueQuestion, DateTime.Now));
+            NavigationService.Navigate(new Uri("/View/CourseView.xaml", UriKind.Relative));
         }
     }
+
+    
 }

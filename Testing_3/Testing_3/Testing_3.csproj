@@ -98,6 +98,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BooleanToVisibilityConverter.cs" />
+    <Compile Include="QuestionNotify.cs" />
     <Compile Include="CompareString\CompareScore.cs" />
     <Compile Include="CompareString\ScoreSharp.cs" />
     <Compile Include="DBConnection\DBConnection.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Model\EquivalentQuestion.cs" />
     <Compile Include="Model\Module.cs" />
     <Compile Include="Model\Question.cs" />
+    <Compile Include="Model\Test.cs" />
     <Compile Include="Model\Theme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
@@ -116,6 +118,7 @@
     </Compile>
     <Compile Include="VIewModel\BaseViewModel.cs" />
     <Compile Include="VIewModel\QuestionViewModel.cs" />
+    <Compile Include="VIewModel\TestViewModel.cs" />
     <Compile Include="VIewModel\ThemeViewModel.cs" />
     <Compile Include="VIewModel\ModuleViewModel.cs" />
     <Compile Include="VIewModel\CourseViewModel.cs" />

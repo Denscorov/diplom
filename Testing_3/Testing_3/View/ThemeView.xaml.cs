@@ -19,7 +19,7 @@ namespace Testing_3.View
         ApplicationBarIconButton testing = new ApplicationBarIconButton() { IconUri = new Uri("/Assets/AppBar/check.png", UriKind.Relative), IsEnabled = true, Text = "тестування" };
         ApplicationBarIconButton selected = new ApplicationBarIconButton() { IconUri = new Uri("/Toolkit.Content/ApplicationBar.Select.png", UriKind.Relative), IsEnabled = true, Text = "вибрати" };
 
-        string type = "";
+        string count = "";
         string str = "";
         public ThemeView()
         {
@@ -33,9 +33,9 @@ namespace Testing_3.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            NavigationContext.QueryString.TryGetValue("type", out type);
+            NavigationContext.QueryString.TryGetValue("count", out count);
             NavigationContext.QueryString.TryGetValue("str", out str);
-            if (type == "many")
+            if (count == "many")
             {
                 themeVM.GetThemesByModulesId(str.Split(' ').Select(int.Parse).ToArray());
             }

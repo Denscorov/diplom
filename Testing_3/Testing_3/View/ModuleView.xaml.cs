@@ -19,7 +19,7 @@ namespace Testing_3.View
         ApplicationBarIconButton testing = new ApplicationBarIconButton() { IconUri = new Uri("/Assets/AppBar/check.png", UriKind.Relative), IsEnabled = true, Text = "тестування" };
         ApplicationBarIconButton selected = new ApplicationBarIconButton() { IconUri = new Uri("/Toolkit.Content/ApplicationBar.Select.png", UriKind.Relative), IsEnabled = true, Text = "вибрати" };
 
-        string type = "";
+        string count = "";
         string str = "";
         public ModuleView()
         {
@@ -33,9 +33,9 @@ namespace Testing_3.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            NavigationContext.QueryString.TryGetValue("type", out type);
+            NavigationContext.QueryString.TryGetValue("count", out count);
             NavigationContext.QueryString.TryGetValue("str", out str);
-            if (type == "many")
+            if (count == "many")
             {
                 moduleVM.GetModulesByCoursesId(str.Split(' ').Select(int.Parse).ToArray());
             }
@@ -67,7 +67,7 @@ namespace Testing_3.View
             {
                 ids[i] = (ModuleList.SelectedItems[i] as Module).Id;
             }
-            NavigationService.Navigate(new Uri("/View/ThemeView.xaml?type=many&str=" + String.Join(" ", ids), UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/ThemeView.xaml?count=many&str=" + String.Join(" ", ids), UriKind.Relative));
         }
 
         private void Testing_Click(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace Testing_3.View
             {
                 ids[i] = (ModuleList.SelectedItems[i] as Module).Id;
             }
-            NavigationService.Navigate(new Uri("/View/TestingView.xaml?obj=Module&str=" + String.Join(" ", ids), UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/TestingView.xaml?type=Module&str=" + String.Join(" ", ids), UriKind.Relative));
         }
 
         private void select_Click(object sender, EventArgs e)

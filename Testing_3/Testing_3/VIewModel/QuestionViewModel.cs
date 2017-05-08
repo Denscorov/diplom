@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Testing_3.Model;
 using SQLiteNetExtensions.Extensions;
+using System;
 
 namespace Testing_3.VIewModel
 {

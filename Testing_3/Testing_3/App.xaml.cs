@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
@@ -11,7 +10,6 @@ using SQLite.Net;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Testing_3.Model;
-using System.IO;
 using Windows.ApplicationModel;
 
 namespace Testing_3
@@ -23,8 +21,7 @@ namespace Testing_3
         /// </summary>
         /// <returns>Корневой кадр приложения телефона.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
-        static string DB_NAME = "test.db";
-        public static string DB_PATH = Path.Combine(ApplicationData.Current.LocalFolder.Path, DB_NAME);
+        
 
         /// <summary>
         /// Конструктор объекта приложения.
@@ -62,35 +59,9 @@ namespace Testing_3
                 // и потреблять энергию батареи, когда телефон не будет использоваться.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
-
-            //if (!CheckFileExists(DB_NAME).Result)
-            //{
-            //    try
-            //    {
-            //        var dbConn = DBConnection.GetCoonection();
-            //        dbConn.CreateTable<Course>();
-            //    }
-            //    catch (SQLiteException ex)
-            //    {
-            //        Debug.WriteLine(ex.Message.ToString());
-            //    }
-            //}
-
         }
 
 
-        async Task<bool> CheckFileExists(string fileName)
-        {
-            try
-            {
-                var store = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
 
         // Код, который выполняется, если при активации контракта, такого как открытие файла или выбор файлов в окне сохранения, возвращается 
         // выбранный файл или другие возвращаемые значения
@@ -114,7 +85,7 @@ namespace Testing_3
 
             try
             {
-                StorageFile storageFile = await ApplicationData.Current.LocalFolder.GetFileAsync(DB_NAME);
+                StorageFile storageFile = await ApplicationData.Current.LocalFolder.GetFileAsync(DBConnection.DB_NAME);
                 isDatabaseExisting = true;
             }
             catch
@@ -124,7 +95,7 @@ namespace Testing_3
 
             if (!isDatabaseExisting)
             {
-                StorageFile databaseFile = await Package.Current.InstalledLocation.GetFileAsync("test.db");
+                StorageFile databaseFile = await Package.Current.InstalledLocation.GetFileAsync(DBConnection.DB_NAME);
                 await databaseFile.CopyAsync(ApplicationData.Current.LocalFolder);
 
                 try
@@ -136,6 +107,7 @@ namespace Testing_3
                     dbConn.CreateTable<Question>();
                     dbConn.CreateTable<Answer>();
                     dbConn.CreateTable<EquivalentQuestion>();
+                    dbConn.CreateTable<Test>();
                 }
                 catch (SQLiteException ex)
                 {

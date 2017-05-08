@@ -32,6 +32,5 @@ namespace Testing_3.VIewModel
         {
             Entities = new ObservableCollection<Theme>(database.GetAllWithChildren<Theme>(m => ids.Contains(m.ModuleId)));
         }
-
     }
 }
