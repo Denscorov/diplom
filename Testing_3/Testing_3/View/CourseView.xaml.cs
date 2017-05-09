@@ -37,10 +37,12 @@ namespace Testing_3.View
                 {
                     ApplicationBar.Buttons.Insert(1, testing);
                 }
+                (ApplicationBar.MenuItems[0] as ApplicationBarMenuItem).IsEnabled = true;
             }
             else
             {
                 ApplicationBar.Buttons.RemoveAt(1);
+                (ApplicationBar.MenuItems[0] as ApplicationBarMenuItem).IsEnabled = false;
             }
         }
 
@@ -51,7 +53,7 @@ namespace Testing_3.View
             {
                 ids[i] = (CourseList.SelectedItems[i] as Course).Id;
             }
-            NavigationService.Navigate(new Uri("/View/ModuleView.xaml?count=many&str=" + String.Join(" ", ids), UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/ModuleView.xaml?str=" + String.Join(" ", ids), UriKind.Relative));
         }
 
         private void Testing_Click(object sender, EventArgs e)

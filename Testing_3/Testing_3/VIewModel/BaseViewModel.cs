@@ -19,11 +19,8 @@ namespace Testing_3.VIewModel
             }
             set
             {
-                if (value != entities)
-                {
-                    entities = value;
-                    NotifyPropertyChanged();
-                }
+                entities = value;
+                NotifyPropertyChanged("Entities");
             }
         }
 

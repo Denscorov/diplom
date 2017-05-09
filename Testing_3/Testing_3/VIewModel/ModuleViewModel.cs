@@ -23,11 +23,6 @@ namespace Testing_3.VIewModel
             Entities = new ObservableCollection<Module>(database.GetAllWithChildren<Module>());
         }
 
-        public void GetModulesByCourseId(int id)
-        {
-            Entities = new ObservableCollection<Module>(database.GetAllWithChildren<Module>(m => m.CourseId == id));
-        }
-
         public void GetModulesByCoursesId(int[] ids)
         {
             Entities = new ObservableCollection<Module>(database.GetAllWithChildren<Module>(m => ids.Contains(m.CourseId)));

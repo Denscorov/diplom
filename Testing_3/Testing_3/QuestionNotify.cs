@@ -83,6 +83,10 @@ namespace Testing_3
             if (CurentQuestion.Answers.Count > 0)
             {
                 var i = ScoreSharp.score(CurentQuestion.Answers[0].Text, textAnswer);
+                if (i > 0.7)
+                {
+                    TrueQuestion++;
+                }
             }
 
             if (index++ < questions.Count())
@@ -121,10 +125,9 @@ namespace Testing_3
 
         public bool NextQuestion(Answer[] answers)
         {
-            var i = CurentQuestion.Answers.Where(a => a.Corect).Count();
-            var j = answers.Where(a => a.Corect == true).Count();
-
-            if (i != 0 && j != 0 && i == j)
+            var x = CurentQuestion.Answers.Where(a => a.Corect == true).Select(a => a.Id).ToArray();
+            var y = answers.Select(a => a.Id).ToArray();
+            if (x.SequenceEqual(y))
             {
                 TrueQuestion++;
             }

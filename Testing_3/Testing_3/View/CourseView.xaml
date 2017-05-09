@@ -56,7 +56,7 @@
                 <shell:ApplicationBarIconButton Text="вибрати" IconUri="/Toolkit.Content/ApplicationBar.Select.png" x:Name="select" Click="select_Click"/>
             </shell:ApplicationBar.Buttons>
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="Переглянути модулі" x:Name="show_modules_bar" Click="show_modules_bar_Click"/>
+                <shell:ApplicationBarMenuItem Text="Переглянути модулі" x:Name="show_modules_bar" Click="show_modules_bar_Click" IsEnabled="False"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

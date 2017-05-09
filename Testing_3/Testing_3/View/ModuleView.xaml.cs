@@ -19,7 +19,6 @@ namespace Testing_3.View
         ApplicationBarIconButton testing = new ApplicationBarIconButton() { IconUri = new Uri("/Assets/AppBar/check.png", UriKind.Relative), IsEnabled = true, Text = "тестування" };
         ApplicationBarIconButton selected = new ApplicationBarIconButton() { IconUri = new Uri("/Toolkit.Content/ApplicationBar.Select.png", UriKind.Relative), IsEnabled = true, Text = "вибрати" };
 
-        string count = "";
         string str = "";
         public ModuleView()
         {
@@ -33,15 +32,10 @@ namespace Testing_3.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            NavigationContext.QueryString.TryGetValue("count", out count);
             NavigationContext.QueryString.TryGetValue("str", out str);
-            if (count == "many")
+            if (moduleVM.Entities.Count == 0)
             {
                 moduleVM.GetModulesByCoursesId(str.Split(' ').Select(int.Parse).ToArray());
-            }
-            else
-            {
-                moduleVM.GetModulesByCourseId(int.Parse(str));
             }
         }
 
@@ -53,10 +47,12 @@ namespace Testing_3.View
                 {
                     ApplicationBar.Buttons.Insert(1, testing);
                 }
+                (ApplicationBar.MenuItems[0] as ApplicationBarMenuItem).IsEnabled = true;
             }
             else
             {
                 ApplicationBar.Buttons.RemoveAt(1);
+                (ApplicationBar.MenuItems[0] as ApplicationBarMenuItem).IsEnabled = false;
             }
         }
 
