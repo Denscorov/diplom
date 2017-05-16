@@ -28,9 +28,9 @@
                             <TextBlock Text="{Binding QCount, StringFormat='Питань {0}, '}" FontSize="18"/>
                             <TextBlock Text="{Binding QTCount, StringFormat='Вірних {0}'}" FontSize="18"/>
                         </StackPanel>
+                        <TextBlock Text="{Binding Timer, StringFormat='Тривалість: {0}'}" FontSize="18"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
-                        <!--<TextBlock Text="{Binding DTime}" HorizontalAlignment="Center" FontSize="12"/>-->
                         <TextBlock Text="{Binding Date}" HorizontalAlignment="Center" FontSize="15"/>
                         <TextBlock Text="{Binding Time}" HorizontalAlignment="Center" FontSize="15"/>
                     </StackPanel>

@@ -28,7 +28,7 @@ namespace Testing_3.Model
             QTCount = qtCount;
             Time = time;
             Date = date;
-            Time = timer;
+            Timer = timer;
         }
     }
 }
