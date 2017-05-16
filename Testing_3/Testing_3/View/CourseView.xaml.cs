@@ -77,5 +77,10 @@ namespace Testing_3.View
                 CourseList.IsSelectionEnabled = true;
             }
         }
+
+        private void show_results_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/TestResultView.xaml", UriKind.Relative));
+        }
     }
 }

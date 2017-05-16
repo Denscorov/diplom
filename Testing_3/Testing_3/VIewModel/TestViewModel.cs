@@ -11,6 +11,9 @@ namespace Testing_3.VIewModel
 {
     class TestViewModel : BaseViewModel<Test>
     {
+        bool dateSorted = true;
+        bool typeSorted = true;
+
         public TestViewModel()
         {
             database = DBConnection.GetCoonection();
@@ -27,6 +30,34 @@ namespace Testing_3.VIewModel
             Entities = new ObservableCollection<Test>(database.Table<Test>());
         }
 
+        public void SortBytype()
+        {
+            if (typeSorted)
+            {
+                Entities = new ObservableCollection<Test>(Entities.OrderBy(e => e.Type));
+                typeSorted = false;
+            }
+            else
+            {
+                Entities = new ObservableCollection<Test>(Entities.OrderByDescending(e => e.Type));
+                typeSorted = true;
+            }
+            
+        }
+
+        public void SortByDate()
+        {
+            if (dateSorted)
+            {
+                Entities = new ObservableCollection<Test>(Entities.OrderBy(e => DateTime.Parse(e.Date)));
+                dateSorted = false;
+            }
+            else
+            {
+                Entities = new ObservableCollection<Test>(Entities.OrderByDescending(e => DateTime.Parse(e.Date)));
+                dateSorted = true;
+            }
+        }
 
     }
 }

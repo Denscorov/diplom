@@ -11,21 +11,24 @@ namespace Testing_3.Model
     {
         [PrimaryKey, AutoIncrement]
         public int Id { set; get; }
-
         public string Type { set; get; }
-        public string Ids { set; get; }
+        public string Description { set; get; }
         public int QCount { set; get; }
         public int QTCount { set; get; }
-        public DateTime DTime { set; get; }
+        public string Date { set; get; }
+        public string Time { set; get; }
+        public string Timer { set; get; }
 
         public Test() { }
-        public Test(string type, string ids, int qCount, int qtCount, DateTime dTime)
+        public Test(string type, string description, int qCount, int qtCount, string time, string date, string timer)
         {
             Type = type;
-            Ids = ids;
+            Description = description;
             QCount = qCount;
             QTCount = qtCount;
-            DTime = dTime;
+            Time = time;
+            Date = date;
+            Time = timer;
         }
     }
 }

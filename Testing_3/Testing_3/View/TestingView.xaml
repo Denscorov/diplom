@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -163,6 +164,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -180,7 +182,11 @@
             </StackPanel>
         </StackPanel>
 
-        <Grid Grid.Row="1">
+        <StackPanel Grid.Row="1" Style="{StaticResource TitleBlock}">
+            <TextBlock Name="textTimer" Style="{StaticResource PhoneTextTitle3Style}" Text="{Binding Timer}" HorizontalAlignment="Center" Foreground="#fff"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
@@ -188,7 +194,7 @@
             </Grid.RowDefinitions>
             <TextBlock Name="questionText" Text="{Binding CurentQuestion.Text}" Grid.Row="0" TextWrapping="Wrap" FontSize="32" Padding="12 0" TextAlignment="Center"/>
             <ListBox Grid.Row="1" Name="questionAnswers" SelectionMode="Multiple" ItemsSource="{Binding CurentQuestion.Answers}" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" ItemTemplate="{StaticResource AnswerTemplate}" Margin="20 10"/>
-            <TextBox Grid.Row="1" Visibility="Collapsed" Name="TextAnswer" TextWrapping="Wrap" MaxHeight="150" Height="150" Text="Enter text"/>
+            <toolkit:PhoneTextBox Grid.Row="1" Visibility="Collapsed" Name="TextAnswer" TextWrapping="Wrap" MaxHeight="150" Height="150" Hint="Ведіть відповідь"/>
             <Button Grid.Row="2" Content="Наступне питання" Name="NextQuestion" Click="NextQuestion_Click"/>
         </Grid>
     </Grid>

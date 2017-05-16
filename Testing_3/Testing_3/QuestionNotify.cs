@@ -46,6 +46,20 @@ namespace Testing_3
 
         Question curentQuestion;
 
+        TimeSpan timer;
+
+        public TimeSpan Timer
+        {
+            set
+            {
+                timer = value;
+            }
+            get
+            {
+                return timer;
+            }
+        }
+
         public Question CurentQuestion
         {
             set
@@ -76,6 +90,7 @@ namespace Testing_3
             CurentQuestion = questions[index];
             NumberQuestion++;
             index++;
+            timer = new TimeSpan(0,0,0);
         }
 
         public bool NextQuestion(string textAnswer)
@@ -154,6 +169,11 @@ namespace Testing_3
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public TimeSpan AddTimer(TimeSpan time)
+        {
+            return Timer += time;
         }
     }
 }

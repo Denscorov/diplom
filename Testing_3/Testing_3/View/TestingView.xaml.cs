@@ -12,23 +12,38 @@ using Testing_3.Model;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Testing_3.CompareString;
+using System.Windows.Threading;
 
 namespace Testing_3.View
 {
     public partial class TestingView : PhoneApplicationPage
     {
         QuestionViewModel questionVM;
+        TestViewModel testVM;
 
         string type = "";
         string str = "";
 
         QuestionNotify qNotify;
 
+        DispatcherTimer timer;
+
         public TestingView()
         {
             InitializeComponent();
             questionVM = new QuestionViewModel();
+            testVM = new TestViewModel();
+            timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += Timer_Tick;
         }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            qNotify.AddTimer(TimeSpan.FromSeconds(1));
+            textTimer.Text = qNotify.Timer.ToString();
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -51,9 +66,33 @@ namespace Testing_3.View
                     break;
             }
 
+            if (questionVM.Entities.Count == 0)
+            {
+                MessageBox.Show("Питання відсутні", "Увага!!!", MessageBoxButton.OK);
+                NavigationService.Navigate(new Uri("/View/CourseView.xaml", UriKind.Relative));
+                return;
+            }
+
             qNotify = new QuestionNotify(questionVM.Entities.ToArray());
             DataContext = qNotify;
             ViewQuestion();
+
+            //MessageBox.Show();
+            timer.Start();
+            
+        }
+
+        protected override void OnBackKeyPress(CancelEventArgs e)
+        {
+            base.OnBackKeyPress(e);
+            if (MessageBox.Show("Завершити тест без збереження результатів???", "Увага!!!", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
 
         private void NextQuestion_Click(object sender, RoutedEventArgs e)
@@ -62,6 +101,11 @@ namespace Testing_3.View
             switch (qNotify.CurentQuestion.Type)
             {
                 case 0:
+                    if (questionAnswers.SelectedItems.Count == 0)
+                    {
+                        MessageBox.Show("Виберіть правельну відповідь", "Увага!", MessageBoxButton.OK);
+                        return;
+                    }
                     Answer[] l = new Answer[questionAnswers.SelectedItems.Count];
                     questionAnswers.SelectedItems.CopyTo(l, 0);
                     if (!qNotify.NextQuestion(l))
@@ -72,6 +116,11 @@ namespace Testing_3.View
                     ViewQuestion();
                     break;
                 case 1:
+                    if (questionAnswers.SelectedItems.Count == 0)
+                    {
+                        MessageBox.Show("Виберіть правельну відповідь", "Увага!", MessageBoxButton.OK);
+                        return;
+                    }
                     if(!qNotify.NextQuestion(questionAnswers.SelectedItem as Answer))
                     {
                         TestFinish();
@@ -80,11 +129,17 @@ namespace Testing_3.View
                     ViewQuestion();
                     break;
                 case 2:
+                    if (TextAnswer.Text == "")
+                    {
+                        MessageBox.Show("Ведіть правельну відповідь", "Увага!", MessageBoxButton.OK);
+                        return;
+                    }
                     if(!qNotify.NextQuestion(TextAnswer.Text))
                     {
                         TestFinish();
                         return;
                     }
+                    TextAnswer.Text = "";
                     ViewQuestion();
                     break;
             }
@@ -122,9 +177,10 @@ namespace Testing_3.View
 
         private void TestFinish()
         {
-            MessageBox.Show(String.Format("{0} вірних, з {1} питань",qNotify.TrueQuestion, qNotify.NumberQuestion),"Результат", MessageBoxButton.OK);
-            TestViewModel testVM = new TestViewModel();
-            testVM.AddTest(new Test(type, str, qNotify.NumberQuestion, qNotify.TrueQuestion, DateTime.Now));
+            timer.Stop();
+            MessageBox.Show(string.Format("{0} вірних, з {1} питань",qNotify.TrueQuestion, qNotify.NumberQuestion),"Результат", MessageBoxButton.OK);
+            testVM.AddTest(new Test(type, questionVM.GetNames(type, str.Split(' ').Select(int.Parse).ToArray()), qNotify.NumberQuestion, qNotify.TrueQuestion, DateTime.Now.ToShortTimeString(), DateTime.Now.ToShortDateString(), qNotify.Timer.ToString()));
+            NavigationService.RemoveBackEntry();
             NavigationService.Navigate(new Uri("/View/CourseView.xaml", UriKind.Relative));
         }
     }

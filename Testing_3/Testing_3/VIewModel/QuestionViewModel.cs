@@ -45,5 +45,20 @@ namespace Testing_3.VIewModel
             var questions = database.GetAllWithChildren<Question>(q => ids.Contains(q.ThemeId), true);
             Entities = new ObservableCollection<Question>(questions);
         }
+
+        public string GetNames(string type, int[] ids)
+        {
+            switch (type)
+            {
+                case "Course":
+                    return String.Join(", ", database.Table<Course>().Where(c => ids.Contains(c.Id)).Select(c => c.Name).ToArray());
+                case "Module":
+                    return String.Join(", ", database.Table<Module>().Where(m => ids.Contains(m.Id)).Select(m => m.Name).ToArray());
+                case "Theme":
+                    return String.Join(", ", database.Table<Theme>().Where(t => ids.Contains(t.Id)).Select(t => t.Name).ToArray());
+                default:
+                    return "";
+            }
+        }
     }
 }

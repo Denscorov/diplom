@@ -35,14 +35,13 @@ namespace Testing_3.View
             base.OnNavigatedTo(e);
             NavigationContext.QueryString.TryGetValue("count", out count);
             NavigationContext.QueryString.TryGetValue("str", out str);
-            if (count == "many")
+
+            if (themeVM.Entities.Count == 0)
             {
                 themeVM.GetThemesByModulesId(str.Split(' ').Select(int.Parse).ToArray());
             }
-            else
-            {
-                themeVM.GetThemesByModuleId(int.Parse(str));
-            }
+
+            
         }
 
         private void testing_Click(object sender, EventArgs e)
@@ -52,7 +51,7 @@ namespace Testing_3.View
             {
                 ids[i] = (ThemeList.SelectedItems[i] as Theme).Id;
             }
-            NavigationService.Navigate(new Uri("/View/TestingView.xaml?obj=Theme&str=" + String.Join(" ", ids), UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/TestingView.xaml?type=Theme&str=" + String.Join(" ", ids), UriKind.Relative));
         }
 
         private void ThemeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
