@@ -27,14 +27,22 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
         <StackPanel Grid.Row="0" Style="{StaticResource TitleBlock}">
-            <TextBlock Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.ApplicationTitle}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="#fff"/>
-            <TextBlock Text="{Binding Source={StaticResource LocalizedStrings} ,Path=LocalizedResources.CoursesList}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#fff"/>
+            <TextBlock 
+                Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.ApplicationTitle}" 
+                Style="{StaticResource PhoneTextNormalStyle}" 
+                Foreground="#fff"/>
+            <TextBlock Text="{Binding Source={StaticResource LocalizedStrings} ,Path=LocalizedResources.CoursesList}" 
+                Margin="9,-7,0,0" 
+                Style="{StaticResource PhoneTextTitle1Style}" 
+                Foreground="#fff"/>
         </StackPanel>
-
-        <toolkit:LongListMultiSelector SelectionChanged="CourseList_SelectionChanged" Name="CourseList" ItemsSource="{Binding Entities}" ItemTemplate="{StaticResource CourseTemplate}" Margin="12 10" Grid.Row="1"/>
-
+        <toolkit:LongListMultiSelector 
+            SelectionChanged="CourseList_SelectionChanged" 
+            Name="CourseList" ItemsSource="{Binding Entities}"
+            ItemTemplate="{StaticResource CourseTemplate}" 
+            Margin="12 10" 
+            Grid.Row="1"/>
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>

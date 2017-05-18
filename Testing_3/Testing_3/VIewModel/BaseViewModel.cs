@@ -7,8 +7,13 @@ using System.Runtime.CompilerServices;
 
 namespace Testing_3.VIewModel
 {
+    /// <summary>
+    /// Базовий клас для класів групи ViewModel
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     abstract class BaseViewModel<T> : INotifyPropertyChanged
     {
+        public BaseViewModel(){}
         protected SQLiteConnection database;
         ObservableCollection<T> entities;
         public ObservableCollection<T> Entities
@@ -23,16 +28,12 @@ namespace Testing_3.VIewModel
                 NotifyPropertyChanged("Entities");
             }
         }
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
         static Random rng = new Random();
-
         public static void Shuffle<T>(IList<T> list)
         {
             int n = list.Count;
