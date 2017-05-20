@@ -1,0 +1,75 @@
+http://prntscr.com/f9jwke
+
+приклад проекту пхп юніт
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.8/phpunit.xsd"
+         backupGlobals="false"
+         colors="true"
+         bootstrap="app/autoload.php"
+>
+    <php>
+        <ini name="error_reporting" value="-1" />
+        <server name="KERNEL_DIR" value="app/" />
+    </php>
+
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>src</directory>
+            <exclude>
+                <directory>src/*Bundle/Resources</directory>
+                <directory>src/*/*Bundle/Resources</directory>
+                <directory>src/*/Bundle/*Bundle/Resources</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
+
+приклад тесту
+<?php
+
+namespace Tests\AppBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+class DefaultControllerTest extends WebTestCase
+{
+    public function testCoursesGet()
+    {
+        $client = static::createClient();
+        $client->request('GET', '/api/courses');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+    public function testModuleGet()
+    {
+        $client = static::createClient();
+        $client->request('GET', '/api/modules');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+    public function testThemeGet()
+    {
+        $client = static::createClient();
+        $client->request('GET', '/api/themes');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+    public function testQuestionGet()
+    {
+        $client = static::createClient();
+        $client->request('GET', '/api/questions');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+}
+
+screen testing http://prntscr.com/f9k0mq
+
+testing in brouser http://prntscr.com/f9k12w
+
+

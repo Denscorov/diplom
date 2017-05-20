@@ -1,6 +1,6 @@
-﻿<xapCache source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Testing_3_Debug_ARM.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="12.05.2017 11:14:16">
+﻿<xapCache source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Testing_3_Debug_ARM.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="19.05.2017 10:18:44">
   <file source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\resources.pri" archivePath="resources.pri" lastWriteTime="12.05.2017 11:14:09" />
-  <file source="G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\Testing_3.dll" archivePath="Testing_3.dll" lastWriteTime="12.05.2017 11:14:09" />
+  <file source="G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\Testing_3.dll" archivePath="Testing_3.dll" lastWriteTime="19.05.2017 10:18:39" />
   <file source="G:\Diplom\Testing_3\Testing_3\Toolkit.Content\ApplicationBar.Add.png" archivePath="Toolkit.Content\ApplicationBar.Add.png" lastWriteTime="01.05.2017 13:50:48" />
   <file source="G:\Diplom\Testing_3\Testing_3\Toolkit.Content\ApplicationBar.Cancel.png" archivePath="Toolkit.Content\ApplicationBar.Cancel.png" lastWriteTime="01.05.2017 13:50:48" />
   <file source="G:\Diplom\Testing_3\Testing_3\Toolkit.Content\ApplicationBar.Check.png" archivePath="Toolkit.Content\ApplicationBar.Check.png" lastWriteTime="01.05.2017 13:50:48" />
@@ -47,6 +47,6 @@
   <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\SQLite.WP80\3.18.0\Redist\Debug\ARM\sqlite3.dll" archivePath="sqlite3.dll" lastWriteTime="26.04.2017 9:27:29" />
   <file source="G:\Diplom\Testing_3\Testing_3\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="01.05.2017 13:50:44" />
   <file source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="09.05.2017 23:48:31" />
-  <file source="G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\MDILProjectFiles.xml" archivePath="MDILProjectFiles.xml" lastWriteTime="12.05.2017 11:14:15" />
+  <file source="G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\MDILProjectFiles.xml" archivePath="MDILProjectFiles.xml" lastWriteTime="19.05.2017 10:18:43" />
   <file source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\AppxManifest.xml" archivePath="AppxManifest.xml" lastWriteTime="12.05.2017 11:14:12" />
 </xapCache>

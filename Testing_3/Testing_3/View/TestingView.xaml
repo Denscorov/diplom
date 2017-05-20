@@ -192,7 +192,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Name="questionText" Text="{Binding CurentQuestion.Text}" Grid.Row="0" TextWrapping="Wrap" FontSize="32" Padding="12 0" TextAlignment="Center"/>
+            <TextBlock Name="questionText" Text="{Binding CurentQuestion.Text}" Grid.Row="0" TextWrapping="Wrap" FontSize="32" Padding="12 0" TextAlignment="Center" VerticalAlignment="Center"/>
             <ListBox Grid.Row="1" Name="questionAnswers" SelectionMode="Multiple" ItemsSource="{Binding CurentQuestion.Answers}" ItemContainerStyle="{StaticResource ListBoxItemStyle1}" ItemTemplate="{StaticResource AnswerTemplate}" Margin="20 10"/>
             <toolkit:PhoneTextBox Grid.Row="1" Visibility="Collapsed" Name="TextAnswer" TextWrapping="Wrap" MaxHeight="150" Height="150" Hint="Ведіть відповідь"/>
             <Button Grid.Row="2" Content="Наступне питання" Name="NextQuestion" Click="NextQuestion_Click"/>
