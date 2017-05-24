@@ -179,7 +179,18 @@ namespace Testing_3.View
         {
             timer.Stop();
             MessageBox.Show(string.Format("{0} вірних, з {1} питань",qNotify.TrueQuestion, qNotify.NumberQuestion),"Результат", MessageBoxButton.OK);
-            testVM.AddTest(new Test(type, questionVM.GetNames(type, str.Split(' ').Select(int.Parse).ToArray()), qNotify.NumberQuestion, qNotify.TrueQuestion, DateTime.Now.ToShortTimeString(), DateTime.Now.ToShortDateString(), qNotify.Timer.ToString()));
+
+            var database = DBConnection.GetCoonection();
+            Student st = null;
+            try
+            {
+                st = database.Table<Student>().Where(s => s.Is_Active).Single();
+            }
+            catch (Exception)
+            {
+            }
+
+            testVM.AddTest(new Test(type, questionVM.GetNames(type, str.Split(' ').Select(int.Parse).ToArray()), qNotify.NumberQuestion, qNotify.TrueQuestion, DateTime.Now.ToShortTimeString(), DateTime.Now.ToShortDateString(), qNotify.Timer.ToString(), st));
             NavigationService.RemoveBackEntry();
             NavigationService.Navigate(new Uri("/View/CourseView.xaml", UriKind.Relative));
         }

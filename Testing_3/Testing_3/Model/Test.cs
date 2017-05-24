@@ -23,7 +23,7 @@ namespace Testing_3.Model
         public Student Student { get; set; }
 
         public Test() { }
-        public Test(string type, string description, int qCount, int qtCount, string time, string date, string timer)
+        public Test(string type, string description, int qCount, int qtCount, string time, string date, string timer, Student st)
         {
             Type = type;
             Description = description;
@@ -32,6 +32,7 @@ namespace Testing_3.Model
             Time = time;
             Date = date;
             Timer = timer;
+            Student = st;
         }
     }
 }

@@ -49,6 +49,8 @@ namespace Testing_3.View
             App.STUD_ID = 0;
             (ApplicationBar.MenuItems[ApplicationBar.MenuItems.Count - 1] as ApplicationBarMenuItem).Text = "Авторизуватись";
             (ApplicationBar.MenuItems[ApplicationBar.MenuItems.Count - 1] as ApplicationBarMenuItem).Click += auth_Click;
+
+
         }
 
         private void CourseList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -129,18 +131,7 @@ namespace Testing_3.View
                     LayoutRoot.IsHitTestVisible = true;
                 }
 
-                //url = App.IP_ADDRESS + "/api/questions";
-                //client = new JsonWebClient();
-                //var resp1 = await client.DoRequestJsonAsync<List<Question>>(url);
-                //if (resp1 != null)
-                //{
-                //    QuestionViewModel questionVM = new QuestionViewModel();
-                //    questionVM.removeAll();
-                //    questionVM.InsertList(resp1);
-                //    LayoutRoot.IsHitTestVisible = true;
-                //    MessageBox.Show("Базу питань оновлено");
-                //}
-
+                
             }
             catch (Exception ex)
             {

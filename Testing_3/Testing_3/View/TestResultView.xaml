@@ -50,7 +50,7 @@
             <TextBlock Text="{Binding Source={StaticResource LocalizedStrings} ,Path=LocalizedResources.TestResultList}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" Foreground="#fff"/>
         </StackPanel>
 
-        <toolkit:LongListMultiSelector  Name="TestResultList" ItemsSource="{Binding Entities}" ItemTemplate="{StaticResource ResultTemplate}" Margin="12 10" Grid.Row="1"/>
+        <toolkit:LongListMultiSelector  Name="TestResultList" ItemsSource="{Binding Entities}" ItemTemplate="{StaticResource ResultTemplate}" Margin="12 10" Grid.Row="1" SelectionChanged="TestResultList_SelectionChanged"/>
 
     </Grid>
 
