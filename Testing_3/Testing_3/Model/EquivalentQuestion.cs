@@ -8,6 +8,6 @@ namespace Testing_3.Model
         public int QuestionId { get; set; }
 
         [ForeignKey(typeof(Question))]
-        public int EquivalentQuestionId { get; set; }
+        public int myEquivalentId { get; set; }
     }
 }

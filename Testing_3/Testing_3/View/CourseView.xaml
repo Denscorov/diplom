@@ -22,7 +22,7 @@
         </DataTemplate>
     </phone:PhoneApplicationPage.Resources>
     
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Transparent" >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -49,6 +49,7 @@
         <shell:ApplicationBar BackgroundColor="#017b67" ForegroundColor="#fff">
             <shell:ApplicationBar.Buttons>
                 <shell:ApplicationBarIconButton Text="вибрати" IconUri="/Toolkit.Content/ApplicationBar.Select.png" x:Name="select" Click="select_Click"/>
+                <shell:ApplicationBarIconButton Text="Оновити базу" IconUri="/Assets/AppBar/refresh.png" x:Name="load_db" Click="load_db_Click" />
             </shell:ApplicationBar.Buttons>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="Переглянути модулі" x:Name="show_modules_bar" Click="show_modules_bar_Click" IsEnabled="False"/>

@@ -67,7 +67,7 @@ namespace Testing_3
                 if (!EquivalentQuestion.Contains(value))
                 {
                     curentQuestion = value;
-                    EquivalentQuestion.AddRange(CurentQuestion.EquivalentQuestion);
+                    EquivalentQuestion.AddRange(CurentQuestion.myEquivalent);
                     NotifyPropertyChanged();
                 }
                 else
@@ -104,7 +104,7 @@ namespace Testing_3
                 }
             }
 
-            if (index++ < questions.Count())
+            if (index++ < questions.Count() - 1)
             {
                 CurentQuestion = questions[index++];
                 NumberQuestion++;

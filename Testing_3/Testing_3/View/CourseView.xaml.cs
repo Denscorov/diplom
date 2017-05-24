@@ -19,6 +19,9 @@ namespace Testing_3.View
         ApplicationBarIconButton testing = new ApplicationBarIconButton() { IconUri = new Uri("/Assets/AppBar/check.png", UriKind.Relative), IsEnabled = true, Text = "тестування" };
         ApplicationBarIconButton selected = new ApplicationBarIconButton() { IconUri = new Uri("/Toolkit.Content/ApplicationBar.Select.png", UriKind.Relative), IsEnabled = true, Text = "вибрати" };
 
+        SQLite.Net.SQLiteConnection database = DBConnection.GetCoonection();
+        Student st;
+
         public CourseView()
         {
             InitializeComponent();
@@ -27,21 +30,40 @@ namespace Testing_3.View
             DataContext = courseVM;
 
             testing.Click += Testing_Click;
+            try
+            {
+                st = database.Table<Student>().Where(s => s.Is_Active).Single();
+                App.STUD_ID = st.Id;
+                (ApplicationBar.MenuItems[ApplicationBar.MenuItems.Count - 1] as ApplicationBarMenuItem).Text = "Вихід";
+                (ApplicationBar.MenuItems[ApplicationBar.MenuItems.Count - 1] as ApplicationBarMenuItem).Click += CourseView_Click;
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        private void CourseView_Click(object sender, EventArgs e)
+        {
+            database.Delete(st);
+            App.STUD_ID = 0;
+            (ApplicationBar.MenuItems[ApplicationBar.MenuItems.Count - 1] as ApplicationBarMenuItem).Text = "Авторизуватись";
+            (ApplicationBar.MenuItems[ApplicationBar.MenuItems.Count - 1] as ApplicationBarMenuItem).Click += auth_Click;
         }
 
         private void CourseList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CourseList.SelectedItems.Count > 0)
             {
-                if (ApplicationBar.Buttons.Count == 1)
+                if (ApplicationBar.Buttons.Count == 2)
                 {
-                    ApplicationBar.Buttons.Insert(1, testing);
+                    ApplicationBar.Buttons.Insert(2, testing);
                 }
                 (ApplicationBar.MenuItems[0] as ApplicationBarMenuItem).IsEnabled = true;
             }
             else
             {
-                ApplicationBar.Buttons.RemoveAt(1);
+                ApplicationBar.Buttons.RemoveAt(2);
                 (ApplicationBar.MenuItems[0] as ApplicationBarMenuItem).IsEnabled = false;
             }
         }
@@ -87,5 +109,45 @@ namespace Testing_3.View
         {
             NavigationService.Navigate(new Uri("/View/AuthView.xaml", UriKind.Relative));
         }
+
+        private async void load_db_Click(object sender, EventArgs e)
+        {
+            LayoutRoot.IsHitTestVisible = false;
+           
+            JsonWebClient client = new JsonWebClient();
+            try
+            {
+                var url = App.IP_ADDRESS + "/api/courses";
+                var resp = await client.DoRequestJsonAsync<List<Course>>(url);
+                if (resp != null)
+                {
+                    courseVM.removeAll();
+                    QuestionViewModel questionVM = new QuestionViewModel();
+                    questionVM.removeAll();
+                    courseVM.InsertList(resp);
+                    MessageBox.Show("Базу питань оновлено");
+                    LayoutRoot.IsHitTestVisible = true;
+                }
+
+                //url = App.IP_ADDRESS + "/api/questions";
+                //client = new JsonWebClient();
+                //var resp1 = await client.DoRequestJsonAsync<List<Question>>(url);
+                //if (resp1 != null)
+                //{
+                //    QuestionViewModel questionVM = new QuestionViewModel();
+                //    questionVM.removeAll();
+                //    questionVM.InsertList(resp1);
+                //    LayoutRoot.IsHitTestVisible = true;
+                //    MessageBox.Show("Базу питань оновлено");
+                //}
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+                LayoutRoot.IsHitTestVisible = true;
+            }
+        }
+        
     }
 }

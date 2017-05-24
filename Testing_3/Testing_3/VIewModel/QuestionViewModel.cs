@@ -60,5 +60,15 @@ namespace Testing_3.VIewModel
                     return "";
             }
         }
+
+        public void removeAll()
+        {
+            database.DeleteAll<Question>();
+        }
+
+        public void InsertList(List<Question> questions)
+        {
+            database.InsertAllWithChildren(questions);
+        }
     }
 }

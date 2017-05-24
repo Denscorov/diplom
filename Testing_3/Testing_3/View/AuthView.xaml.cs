@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Windows.Web.Http;
 using Newtonsoft.Json;
+using Testing_3.Model;
 
 namespace Testing_3.View
 {
@@ -21,12 +22,32 @@ namespace Testing_3.View
 
         private async void auth_Click(object sender, RoutedEventArgs e)
         {
-            //var url = "192.168.0.101/api/students/" +  login.Text + "/auths/" + password.Text;
-            var url = "https://httpbin.org/get";
+            var url = App.IP_ADDRESS + "/api/students/"+login.Text+"/auths/" + password.Text;
+
+            if (login.Text == "" || password.Text == "")
+            {
+                MessageBox.Show("Логін та пароль маютьбути ведені!!!");
+                return;
+            }
             JsonWebClient client = new JsonWebClient();
-            var resp = await client.DoRequestAsync(url);
-            string result = resp.ReadToEnd();
-            MessageBox.Show(result);
+            try
+            {
+                MessageBox.Show(url);
+                var resp = await client.DoRequestJsonAsync<Student>(url);
+                if (resp != null)
+                {
+                    MessageBox.Show("Авторизація успішно виконана");
+                    var database = DBConnection.GetCoonection();
+                    database.Insert(resp);
+                    App.STUD_ID = resp.Id;
+                    NavigationService.Navigate(new Uri("/View/CourseView.xaml", UriKind.Relative));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            
         }
 
 

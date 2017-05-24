@@ -212,3 +212,4 @@ G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\ProjectArchitectures.txt
 G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\MDILProjectFiles.xml
 G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\XapCacheFile.xml
 G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\Testing_3.csprojResolveAssemblyReference.cache
+G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\View\AuthView.g.cs

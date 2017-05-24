@@ -122,6 +122,7 @@
     <Compile Include="VIewModel\BaseViewModel.cs" />
     <Compile Include="VIewModel\QuestionViewModel.cs" />
     <Compile Include="VIewModel\TestViewModel.cs" />
+    <Compile Include="VIewModel\StudentViewModel.cs" />
     <Compile Include="VIewModel\ThemeViewModel.cs" />
     <Compile Include="VIewModel\ModuleViewModel.cs" />
     <Compile Include="VIewModel\CourseViewModel.cs" />

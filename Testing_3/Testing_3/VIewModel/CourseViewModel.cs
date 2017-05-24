@@ -22,5 +22,18 @@ namespace Testing_3.VIewModel
         {
             Entities = new ObservableCollection<Course>(database.GetAllWithChildren<Course>());
         }
+
+        public void removeAll()
+        {
+            database.DeleteAll<Course>();
+        }
+
+        public void InsertList(List<Course> courses)
+        {
+            database.InsertAllWithChildren(courses, true);
+            GetAllCourses();
+        }
+
+
     }
 }

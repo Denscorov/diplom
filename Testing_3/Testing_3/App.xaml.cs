@@ -21,7 +21,11 @@ namespace Testing_3
         /// </summary>
         /// <returns>Корневой кадр приложения телефона.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
-        
+
+        public static string IP_ADDRESS = "http://192.168.0.106";
+
+        public static int STUD_ID = 0;
+
 
         /// <summary>
         /// Конструктор объекта приложения.
@@ -108,6 +112,7 @@ namespace Testing_3
                     dbConn.CreateTable<Answer>();
                     dbConn.CreateTable<EquivalentQuestion>();
                     dbConn.CreateTable<Test>();
+                    dbConn.CreateTable<Student>();
                 }
                 catch (SQLiteException ex)
                 {
