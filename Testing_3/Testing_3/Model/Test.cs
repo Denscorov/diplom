@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 
 namespace Testing_3.Model
 {
@@ -18,6 +19,12 @@ namespace Testing_3.Model
         public string Date { set; get; }
         public string Time { set; get; }
         public string Timer { set; get; }
+
+        [ForeignKey(typeof(Student))]
+        public int StudentId { set; get; }
+
+        [ManyToOne]
+        public Student Student { get; set; }
 
         public Test() { }
         public Test(string type, string description, int qCount, int qtCount, string time, string date, string timer)

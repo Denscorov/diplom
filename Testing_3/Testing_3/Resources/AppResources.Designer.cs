@@ -70,6 +70,15 @@ namespace Testing_3.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Авторизація.
+        /// </summary>
+        public static string AuthTitle {
+            get {
+                return ResourceManager.GetString("AuthTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Список курсів.
         /// </summary>
         public static string CoursesList {

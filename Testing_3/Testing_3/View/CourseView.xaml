@@ -53,6 +53,7 @@
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="Переглянути модулі" x:Name="show_modules_bar" Click="show_modules_bar_Click" IsEnabled="False"/>
                 <shell:ApplicationBarMenuItem Text="Результати тестувань" x:Name="show_results" Click="show_results_Click"/>
+                <shell:ApplicationBarMenuItem Text="Авторизуватись" x:Name="auth" Click="auth_Click"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

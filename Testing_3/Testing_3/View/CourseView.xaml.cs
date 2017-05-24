@@ -82,5 +82,10 @@ namespace Testing_3.View
         {
             NavigationService.Navigate(new Uri("/View/TestResultView.xaml", UriKind.Relative));
         }
+
+        private void auth_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/AuthView.xaml", UriKind.Relative));
+        }
     }
 }

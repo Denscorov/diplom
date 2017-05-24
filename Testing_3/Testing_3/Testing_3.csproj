@@ -71,6 +71,7 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
     <DebugSymbols>true</DebugSymbols>
@@ -98,6 +99,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BooleanToVisibilityConverter.cs" />
+    <Compile Include="JsonWebClient.cs" />
+    <Compile Include="Model\Student.cs" />
     <Compile Include="QuestionNotify.cs" />
     <Compile Include="CompareString\CompareScore.cs" />
     <Compile Include="CompareString\ScoreSharp.cs" />
@@ -122,6 +125,9 @@
     <Compile Include="VIewModel\ThemeViewModel.cs" />
     <Compile Include="VIewModel\ModuleViewModel.cs" />
     <Compile Include="VIewModel\CourseViewModel.cs" />
+    <Compile Include="View\AuthView.xaml.cs">
+      <DependentUpon>AuthView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CourseView.xaml.cs">
       <DependentUpon>CourseView.xaml</DependentUpon>
     </Compile>
@@ -246,6 +252,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\AuthView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CourseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

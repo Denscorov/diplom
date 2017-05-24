@@ -143,4 +143,7 @@
   <data name="TestResultList" xml:space="preserve">
     <value>Результати тестувань</value>
   </data>
+  <data name="AuthTitle" xml:space="preserve">
+    <value>Авторизація</value>
+  </data>
 </root>
