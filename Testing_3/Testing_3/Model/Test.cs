@@ -6,20 +6,30 @@ namespace Testing_3.Model
 {
     class Test
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey, AutoIncrement, JsonIgnore]
         public int Id { set; get; }
+        [JsonProperty("type")]
         public string Type { set; get; }
+        [JsonProperty("description")]
         public string Description { set; get; }
+        [JsonProperty("q_count")]
         public int QCount { set; get; }
+        [JsonProperty("q_t_count")]
         public int QTCount { set; get; }
+        [JsonProperty("date")]
         public string Date { set; get; }
+        [JsonProperty("time")]
         public string Time { set; get; }
+        [JsonProperty("timer")]
         public string Timer { set; get; }
 
-        [ForeignKey(typeof(Student))]
+        [JsonIgnore]
+        public bool Load { set; get; }
+
+        [ForeignKey(typeof(Student)), JsonProperty("student")]
         public int StudentId { set; get; }
 
-        [ManyToOne]
+        [ManyToOne, JsonIgnore]
         public Student Student { get; set; }
 
         public Test() { }
@@ -33,6 +43,7 @@ namespace Testing_3.Model
             Date = date;
             Timer = timer;
             Student = st;
+            Load = false;
         }
     }
 }

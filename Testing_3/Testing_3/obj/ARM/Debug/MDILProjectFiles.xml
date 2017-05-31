@@ -3,6 +3,7 @@
   <XAPFiles>
     <File>resources.pri</File>
     <File>Testing_3.dll</File>
+    <File>Assets\AppBar\feature.settings.png</File>
     <File>Assets\AppBar\share.png</File>
     <File>Toolkit.Content\ApplicationBar.Add.png</File>
     <File>Toolkit.Content\ApplicationBar.Cancel.png</File>

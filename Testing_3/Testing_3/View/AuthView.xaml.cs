@@ -22,31 +22,32 @@ namespace Testing_3.View
 
         private async void auth_Click(object sender, RoutedEventArgs e)
         {
-            var url = App.IP_ADDRESS + "/api/students/"+login.Text+"/auths/" + password.Text;
+            var url = "/api/students/" + login.Text + "/auths/" + password.Password;
 
-            if (login.Text == "" || password.Text == "")
+            if (login.Text == "" || password.Password == "")
             {
                 MessageBox.Show("Логін та пароль маютьбути ведені!!!");
                 return;
             }
-            JsonWebClient client = new JsonWebClient();
+
+            HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, url);
             try
             {
-                MessageBox.Show(url);
-                var resp = await client.DoRequestJsonAsync<Student>(url);
-                if (resp != null)
+                var student = await http.GetRequestJsonAsync<Student>();
+                if (student != null)
                 {
                     MessageBox.Show("Авторизація успішно виконана");
                     var database = DBConnection.GetCoonection();
-                    database.Insert(resp);
-                    App.STUD_ID = resp.Id;
+                    database.Insert(student);
+                    App.STUD_ID = student.Id;
                     NavigationService.Navigate(new Uri("/View/CourseView.xaml", UriKind.Relative));
                 }
             }
-            catch (Exception ex)
+            catch (WebException ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show("Користувача з таким логіном чи паролем не існує, або перервано з'єднання!!!");
             }
+            
             
         }
 

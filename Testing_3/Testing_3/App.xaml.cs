@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Testing_3.Model;
 using Windows.ApplicationModel;
+using Testing_3.VIewModel;
 
 namespace Testing_3
 {
@@ -22,7 +23,8 @@ namespace Testing_3
         /// <returns>Корневой кадр приложения телефона.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
 
-        public static string IP_ADDRESS = "http://192.168.0.106";
+        public static string IP_ADDRESS { get; set; }
+        public static int Level = -1;
 
         public static int STUD_ID = 0;
 
@@ -63,6 +65,8 @@ namespace Testing_3
                 // и потреблять энергию батареи, когда телефон не будет использоваться.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
+
+            
         }
 
 
@@ -81,6 +85,7 @@ namespace Testing_3
             {
                 await CopyDatabase();
             }
+            SetingsViewModel set = new SetingsViewModel();
         }
 
         private async Task CopyDatabase()
@@ -113,6 +118,7 @@ namespace Testing_3
                     dbConn.CreateTable<EquivalentQuestion>();
                     dbConn.CreateTable<Test>();
                     dbConn.CreateTable<Student>();
+                    dbConn.CreateTable<Setings>();
                 }
                 catch (SQLiteException ex)
                 {

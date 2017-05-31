@@ -61,7 +61,7 @@ namespace Testing_3.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Тестування ОКМ.
+        ///   Looks up a localized string similar to Тестування знань.
         /// </summary>
         public static string ApplicationTitle {
             get {

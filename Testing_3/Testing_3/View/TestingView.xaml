@@ -20,7 +20,6 @@
                 <TextBlock Text="{Binding Text}"/>
             </StackPanel>
         </DataTemplate>
-        
         <Style x:Key="ListBoxItemStyle1" TargetType="ListBoxItem">
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
             <Setter Property="BorderThickness" Value="0 0 0 1"/>

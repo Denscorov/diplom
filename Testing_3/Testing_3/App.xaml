@@ -8,7 +8,7 @@
 
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:Testing_3" x:Key="LocalizedStrings"/>
-        <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        
 
         <Style TargetType="ContentControl" x:Key="contectMenuStyle"></Style>
         

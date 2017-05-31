@@ -50,6 +50,7 @@
             <shell:ApplicationBar.Buttons>
                 <shell:ApplicationBarIconButton Text="вибрати" IconUri="/Toolkit.Content/ApplicationBar.Select.png" x:Name="select" Click="select_Click"/>
                 <shell:ApplicationBarIconButton Text="Оновити базу" IconUri="/Assets/AppBar/refresh.png" x:Name="load_db" Click="load_db_Click" />
+                <shell:ApplicationBarIconButton Text="Налаштування" IconUri="/Assets/AppBar/feature.settings.png" x:Name="setings" Click="setings_Click"/>
             </shell:ApplicationBar.Buttons>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="Переглянути модулі" x:Name="show_modules_bar" Click="show_modules_bar_Click" IsEnabled="False"/>

@@ -33,7 +33,7 @@
             <TextBlock Text="Логін"/>
             <TextBox Name="login"/>
             <TextBlock Text="Пароль"/>
-            <TextBox Name="password"/>
+            <PasswordBox Name="password"/>
             <Button Content="Авторизуватись" Name="auth" Click="auth_Click"/>
         </StackPanel>
         

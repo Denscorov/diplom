@@ -45,24 +45,27 @@ namespace Testing_3.View
             }
         }
 
-        private void Load_Click(object sender, EventArgs e)
+        private async void Load_Click(object sender, EventArgs e)
         {
-            //JsonWebClient client = new JsonWebClient();
-            //try
-            //{
-            //    var url = App.IP_ADDRESS + "/api/students/" + st.Login + "/auths/" + st.Password;
-            //    var resp = await client.DoRequestJsonAsync<Student>(url);
-            //    if (resp != null)
-            //    {
-            //post(App.IP_ADDRESS + "/api/tests/arrays");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message.ToString());
-            //}
+            List<int> t = new List<int>();
+            foreach (var item in TestResultList.SelectedItems)
+            {
+                t.Add((item as Test).Id);
+            }
+            List<Test> ttt = database.Table<Test>().Where(tt => t.Contains(tt.Id)).ToList();
+            HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, "/api/students/" + st.Login + "/auths/" + st.Password);
+            var s = await http.GetRequestJsonAsync<Student>();
+            ttt.ForEach((i) => {
+                i.StudentId = s.Id;
+            });
+            string data = Newtonsoft.Json.JsonConvert.SerializeObject(ttt);
+            HttpRequestSend req = new HttpRequestSend(App.IP_ADDRESS, "/api/tests/arrays");
+            var w = await req.PostRequest(data);
+        }
 
-            //post(App.IP_ADDRESS + "/api/");
+        private void Client_UploadStringCompleted(object sender, UploadStringCompletedEventArgs e)
+        {
+            MessageBox.Show(e.Result);
         }
 
         private void select_Click(object sender, EventArgs e)
@@ -87,21 +90,7 @@ namespace Testing_3.View
             testVm.SortByDate();
         }
 
-        public async void post(string uri)
-        {
-            var database = DBConnection.GetCoonection();
-            List<Test> t = new List<Test>();
-            foreach (var item in TestResultList.SelectedItems)
-            {
-                var o = database.Table<Test>().Where(tt => tt.Id == (item as Test).Id).Single();
-                t.Add(o);
-            }
-
-
-            HttpWebRequest httpRequest = WebRequest.Create(uri) as HttpWebRequest;
-            await GetHttpPostResponse(httpRequest, Newtonsoft.Json.JsonConvert.SerializeObject(t));
-            
-        }
+        
 
         private void TestResultList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -118,40 +107,6 @@ namespace Testing_3.View
                     load.IsEnabled = false;
                 }
             }
-        }
-
-        internal static async Task<string> GetHttpPostResponse(HttpWebRequest request, string postData)
-        {
-            string received = null;
-
-            request.Method = "POST";
-            request.ContentType = "application/x-www-form-urlencoded";
-
-            byte[] requestBody = Encoding.UTF8.GetBytes(postData);
-
-            using (var postStream = await request.GetRequestStreamAsync())
-            {
-                await postStream.WriteAsync(requestBody, 0, requestBody.Length);
-            }
-
-            try
-            {
-                var response = (HttpWebResponse)await request.GetResponseAsync();
-                if (response != null)
-                {
-                    var reader = new StreamReader(response.GetResponseStream());
-                    received = await reader.ReadToEndAsync();
-                }
-            }
-            catch (WebException we)
-            {
-                var reader = new StreamReader(we.Response.GetResponseStream());
-                string responseString = reader.ReadToEnd();
-                Debug.WriteLine(responseString);
-                return responseString;
-            }
-
-            return received;
         }
     }
 }

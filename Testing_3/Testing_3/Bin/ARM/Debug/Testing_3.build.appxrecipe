@@ -229,6 +229,9 @@
     <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\ApplicationIcon.png">
       <PackagePath>ApplicationIcon.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\AppBar\feature.settings.png">
+      <PackagePath>Assets\AppBar\feature.settings.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\AppBar\share.png">
       <PackagePath>Assets\AppBar\share.png</PackagePath>
     </AppxPackagedFile>

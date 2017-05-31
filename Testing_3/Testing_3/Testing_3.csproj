@@ -99,7 +99,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BooleanToVisibilityConverter.cs" />
+    <Compile Include="HttpRequestSend.cs" />
     <Compile Include="JsonWebClient.cs" />
+    <Compile Include="Model\Setings.cs" />
     <Compile Include="Model\Student.cs" />
     <Compile Include="QuestionNotify.cs" />
     <Compile Include="CompareString\CompareScore.cs" />
@@ -121,6 +123,7 @@
     </Compile>
     <Compile Include="VIewModel\BaseViewModel.cs" />
     <Compile Include="VIewModel\QuestionViewModel.cs" />
+    <Compile Include="VIewModel\SetingsViewModel.cs" />
     <Compile Include="VIewModel\TestViewModel.cs" />
     <Compile Include="VIewModel\StudentViewModel.cs" />
     <Compile Include="VIewModel\ThemeViewModel.cs" />
@@ -134,6 +137,9 @@
     </Compile>
     <Compile Include="View\ModuleView.xaml.cs">
       <DependentUpon>ModuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetingsView.xaml.cs">
+      <DependentUpon>SetingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TestingView.xaml.cs">
       <DependentUpon>TestingView.xaml</DependentUpon>
@@ -158,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png" />
+    <Content Include="Assets\AppBar\feature.settings.png" />
     <Content Include="Assets\AppBar\share.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
@@ -263,6 +270,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SetingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

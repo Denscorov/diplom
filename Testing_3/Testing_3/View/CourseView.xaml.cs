@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Testing_3.VIewModel;
 using Testing_3.Model;
+using Windows.Web.Http;
 
 namespace Testing_3.View
 {
@@ -39,27 +40,39 @@ namespace Testing_3.View
             }
             catch (Exception)
             {
-                
+
             }
         }
 
-        private void CourseView_Click(object sender, EventArgs e)
+        private async void CourseView_Click(object sender, EventArgs e)
         {
-            database.Delete(st);
-            App.STUD_ID = 0;
-            (ApplicationBar.MenuItems[ApplicationBar.MenuItems.Count - 1] as ApplicationBarMenuItem).Text = "Авторизуватись";
-            (ApplicationBar.MenuItems[ApplicationBar.MenuItems.Count - 1] as ApplicationBarMenuItem).Click += auth_Click;
+            try
+            {
+                HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, "/api/students/" + st.Login + "/auths/" + st.Password);
+                var s = await http.GetRequestJsonAsync<Student>();
+                http = new HttpRequestSend(App.IP_ADDRESS, "/api/students/" + s.Id + "/actives/0");
+                await http.GetRequestJsonAsync<Student>();
+                database.Delete(st);
+                App.STUD_ID = 0;
+                (ApplicationBar.MenuItems[ApplicationBar.MenuItems.Count - 1] as ApplicationBarMenuItem).Text = "Авторизуватись";
+                (ApplicationBar.MenuItems[ApplicationBar.MenuItems.Count - 1] as ApplicationBarMenuItem).Click += auth_Click;
+            }
+            catch (WebException ex)
+            {
 
-
+                throw;
+            }
+            
+            
         }
 
         private void CourseList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CourseList.SelectedItems.Count > 0)
             {
-                if (ApplicationBar.Buttons.Count == 2)
+                if (ApplicationBar.Buttons.Count == 3)
                 {
-                    ApplicationBar.Buttons.Insert(2, testing);
+                    ApplicationBar.Buttons.Insert(3, testing);
                 }
                 (ApplicationBar.MenuItems[0] as ApplicationBarMenuItem).IsEnabled = true;
             }
@@ -114,31 +127,24 @@ namespace Testing_3.View
 
         private async void load_db_Click(object sender, EventArgs e)
         {
-            LayoutRoot.IsHitTestVisible = false;
-           
-            JsonWebClient client = new JsonWebClient();
             try
             {
-                var url = App.IP_ADDRESS + "/api/courses";
-                var resp = await client.DoRequestJsonAsync<List<Course>>(url);
-                if (resp != null)
-                {
-                    courseVM.removeAll();
-                    QuestionViewModel questionVM = new QuestionViewModel();
-                    questionVM.removeAll();
-                    courseVM.InsertList(resp);
-                    MessageBox.Show("Базу питань оновлено");
-                    LayoutRoot.IsHitTestVisible = true;
-                }
-
-                
+                HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, "/api/courses");
+                var list = await http.GetRequestJsonAsync<List<Course>>();
+                courseVM.removeAll();
+                courseVM.InsertList(list);
+                MessageBox.Show("База даних оновлена!!!");
             }
-            catch (Exception ex)
+            catch (WebException ex)
             {
                 MessageBox.Show(ex.Message.ToString());
-                LayoutRoot.IsHitTestVisible = true;
             }
+
         }
-        
+
+        private void setings_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/SetingsView.xaml", UriKind.Relative));
+        }
     }
 }

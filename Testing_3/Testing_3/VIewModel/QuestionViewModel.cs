@@ -23,7 +23,15 @@ namespace Testing_3.VIewModel
             {
                 foreach (var theme in module.Themes)
                 {
-                    q.AddRange(theme.Questions);
+                    if (App.Level != -1)
+                    {
+                        q.AddRange(theme.Questions.Where(qq => qq.Level == App.Level));
+                    }
+                    else
+                    {
+                        q.AddRange(theme.Questions);
+                    }
+                    
                 }
             }
             Entities = new ObservableCollection<Question>(q);
@@ -35,14 +43,30 @@ namespace Testing_3.VIewModel
             List<Question> q = new List<Question>();
             foreach (var theme in themes)
             {
-                q.AddRange(theme.Questions);
+                if (App.Level != -1)
+                {
+                    q.AddRange(theme.Questions.Where(qq => qq.Level == App.Level));
+                }
+                else
+                {
+                    q.AddRange(theme.Questions);
+                }
             }
             Entities = new ObservableCollection<Question>(q);
         }
 
         public void GetQuestionsByThemesId(int[] ids)
         {
-            var questions = database.GetAllWithChildren<Question>(q => ids.Contains(q.ThemeId), true);
+            List<Question> questions;
+            if (App.Level != -1)
+            {
+                questions = database.GetAllWithChildren<Question>(q => ids.Contains(q.ThemeId) && q.Level == App.Level, true);
+            }
+            else
+            {
+                questions = database.GetAllWithChildren<Question>(q => ids.Contains(q.ThemeId), true);
+            }
+            
             Entities = new ObservableCollection<Question>(questions);
         }
 
