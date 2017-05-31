@@ -27,30 +27,27 @@ namespace Testing_3.View
             if (login.Text == "" || password.Password == "")
             {
                 MessageBox.Show("Логін та пароль маютьбути ведені!!!");
-                return;
             }
-
-            HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, url);
-            try
+            else
             {
-                var student = await http.GetRequestJsonAsync<Student>();
-                if (student != null)
+                HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, url);
+                try
                 {
-                    MessageBox.Show("Авторизація успішно виконана");
-                    var database = DBConnection.GetCoonection();
-                    database.Insert(student);
-                    App.STUD_ID = student.Id;
-                    NavigationService.Navigate(new Uri("/View/CourseView.xaml", UriKind.Relative));
+                    var student = await http.GetRequestJsonAsync<Student>();
+                    if (student != null)
+                    {
+                        MessageBox.Show("Авторизація успішно виконана");
+                        var database = DBConnection.GetCoonection();
+                        database.Insert(student);
+                        App.STUD_ID = student.Id;
+                        NavigationService.Navigate(new Uri("/View/CourseView.xaml", UriKind.Relative));
+                    }
+                }
+                catch (WebException ex)
+                {
+                    MessageBox.Show("Користувача з таким логіном чи паролем не існує, або перервано з'єднання!!!");
                 }
             }
-            catch (WebException ex)
-            {
-                MessageBox.Show("Користувача з таким логіном чи паролем не існує, або перервано з'єднання!!!");
-            }
-            
-            
         }
-
-
     }
 }
