@@ -10,11 +10,6 @@ G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\Testing_3.g.resources
 G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\Testing_3.Resources.AppResources.resources
 G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\Testing_3.csproj.GenerateResource.Cache
 G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Assets\ApplicationIcon.png
-G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Assets\Tiles\FlipCycleTileLarge.png
-G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Assets\Tiles\FlipCycleTileMedium.png
-G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Assets\Tiles\FlipCycleTileSmall.png
-G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Assets\Tiles\IconicTileMediumLarge.png
-G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Assets\Tiles\IconicTileSmall.png
 G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\e_sqlite3.dll
 G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Testing_3.dll.config
 G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Testing_3.dll

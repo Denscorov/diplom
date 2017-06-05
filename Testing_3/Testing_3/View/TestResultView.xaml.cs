@@ -47,6 +47,7 @@ namespace Testing_3.View
 
         private async void Load_Click(object sender, EventArgs e)
         {
+            testVM.IsBusy = true;
             List<int> t = new List<int>();
             foreach (var item in TestResultList.SelectedItems)
             {
@@ -60,11 +61,10 @@ namespace Testing_3.View
             });
             string data = Newtonsoft.Json.JsonConvert.SerializeObject(ttt);
             HttpRequestSend req = new HttpRequestSend(App.IP_ADDRESS, "/api/tests/arrays");
-            testVM.IsBusy = true;
-            testVM.Message = "Вивантаження результатів...";
+            
             var w = await req.PostRequest(data);
-            testVM.Message = "Вивантаження завершене!!!";
             testVM.IsBusy = false;
+            TestResultList.IsSelectionEnabled = false;
         }
 
         private void Client_UploadStringCompleted(object sender, UploadStringCompletedEventArgs e)

@@ -16,6 +16,9 @@ namespace Testing_3.View
 
         private async void auth_Click(object sender, RoutedEventArgs e)
         {
+            progressIndicator.IsVisible = true;
+            progressIndicator.IsIndeterminate = true;
+            progressIndicator.Text = "Авторизація";
             var url = "/api/students/" + login.Text + "/auths/" + password.Password;
 
             if (login.Text == "" || password.Password == "")
@@ -27,18 +30,15 @@ namespace Testing_3.View
                 HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, url);
                 try
                 {
-                    progressIndicator.IsVisible = true;
-                    progressIndicator.IsIndeterminate = true;
-                    progressIndicator.Text = "Авторизація";
+                    
                     var student = await http.GetRequestJsonAsync<Student>();
                     if (student != null)
                     {
-                        MessageBox.Show("Авторизація успішно виконана");
+                        
                         var database = DBConnection.GetCoonection();
                         database.Insert(student);
                         App.STUD_ID = student.Id;
                         progressIndicator.IsVisible = false;
-                        progressIndicator.IsIndeterminate = false;
                         NavigationService.Navigate(new Uri("/View/CourseView.xaml", UriKind.Relative));
                     }
                 }

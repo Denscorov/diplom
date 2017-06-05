@@ -126,23 +126,21 @@ namespace Testing_3.View
 
         private async void load_db_Click(object sender, EventArgs e)
         {
+            courseVM.IsBusy = true;
             try
             {
                 HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, "/api/courses");
-                courseVM.IsBusy = true;
-                courseVM.Message = "Оновдення бази даних";
                 var list = await http.GetRequestJsonAsync<List<Course>>();
                 courseVM.removeAll();
                 courseVM.InsertList(list);
-                courseVM.Message = "Оновдення завершено!!!";
                 courseVM.IsBusy = false;
                 MessageBox.Show("База даних оновлена!!!");
             }
             catch (WebException ex)
             {
+                courseVM.IsBusy = false;
                 MessageBox.Show(ex.Message.ToString());
             }
-
         }
 
         private void setings_Click(object sender, EventArgs e)

@@ -235,6 +235,18 @@
     <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\AppBar\share.png">
       <PackagePath>Assets\AppBar\share.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\Tiles\Icon.png">
+      <PackagePath>Assets\Tiles\Icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\Tiles\MiddleIcon.png">
+      <PackagePath>Assets\Tiles\MiddleIcon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\Tiles\SmallIcon.png">
+      <PackagePath>Assets\Tiles\SmallIcon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\download.png">
+      <PackagePath>download.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Toolkit.Content\ApplicationBar.Add.png">
       <PackagePath>Toolkit.Content\ApplicationBar.Add.png</PackagePath>
     </AppxPackagedFile>
@@ -290,21 +302,6 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\WideLogo.png">
       <PackagePath>Assets\WideLogo.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\Tiles\FlipCycleTileLarge.png">
-      <PackagePath>Assets\Tiles\FlipCycleTileLarge.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\Tiles\FlipCycleTileMedium.png">
-      <PackagePath>Assets\Tiles\FlipCycleTileMedium.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\Tiles\FlipCycleTileSmall.png">
-      <PackagePath>Assets\Tiles\FlipCycleTileSmall.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\Tiles\IconicTileMediumLarge.png">
-      <PackagePath>Assets\Tiles\IconicTileMediumLarge.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\Assets\Tiles\IconicTileSmall.png">
-      <PackagePath>Assets\Tiles\IconicTileSmall.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\Diplom\Testing_3\Testing_3\test.db">
       <PackagePath>test.db</PackagePath>

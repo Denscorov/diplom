@@ -2,7 +2,7 @@
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
   <DefaultLanguage xmlns="" code="ru-RU" />
   <App xmlns="" ProductID="{fe7d22d8-26d1-44be-9cb3-ba386b698747}" Title="Тестування знань" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Testing_3 author" Description="Мобільний додаток для самоперевірки та тестування знань студентів з дисципліни &quot;Організація компютерних мереж&quot; та інших дисциплін." SDOptOut="true" BackUpOptOut="false" Publisher="Testing_3" PublisherID="{bff32d6c-386f-4233-99c0-47e451b8472f}">
-    <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
+    <IconPath IsRelative="true" IsResource="false">Assets\Tiles\Icon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
       <Capability Name="ID_CAP_REMOVABLE_STORAGE" />
@@ -13,10 +13,10 @@
     <Tokens>
       <PrimaryToken TokenID="Testing_3Token" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false"></SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\SmallIcon.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false"></BackgroundImageURI>
-          <Title></Title>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\MiddleIcon.png</BackgroundImageURI>
+          <Title>Тестування</Title>
           <BackContent></BackContent>
           <BackBackgroundImageURI IsRelative="true" IsResource="false"></BackBackgroundImageURI>
           <BackTitle></BackTitle>

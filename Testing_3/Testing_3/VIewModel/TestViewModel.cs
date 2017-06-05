@@ -18,6 +18,8 @@ namespace Testing_3.VIewModel
         {
             database = DBConnection.GetCoonection();
             Entities = new ObservableCollection<Test>();
+            Message = "Вивантаження результатів...";
+            IsBusy = false;
         }
 
         public void AddTest(Test test)

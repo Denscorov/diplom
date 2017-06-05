@@ -16,6 +16,8 @@ namespace Testing_3.VIewModel
         {
             database = DBConnection.GetCoonection();
             Entities = new ObservableCollection<Course>();
+            Message = "Оновлення бази даних...";
+            IsBusy = false;
         }
 
         public void GetAllCourses()

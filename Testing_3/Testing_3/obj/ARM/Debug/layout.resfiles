@@ -13,12 +13,11 @@ Assets\SplashScreen.png
 Assets\SquareTile150x150.png
 Assets\SquareTile71x71.png
 Assets\StoreLogo.png
-Assets\Tiles\FlipCycleTileLarge.png
-Assets\Tiles\FlipCycleTileMedium.png
-Assets\Tiles\FlipCycleTileSmall.png
-Assets\Tiles\IconicTileMediumLarge.png
-Assets\Tiles\IconicTileSmall.png
+Assets\Tiles\Icon.png
+Assets\Tiles\MiddleIcon.png
+Assets\Tiles\SmallIcon.png
 Assets\WideLogo.png
+download.png
 test.db
 Toolkit.Content\ApplicationBar.Add.png
 Toolkit.Content\ApplicationBar.Cancel.png
