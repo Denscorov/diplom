@@ -28,6 +28,21 @@ namespace Testing_3.VIewModel
                 NotifyPropertyChanged("Entities");
             }
         }
+
+        private bool isBusy;
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set { isBusy = value; NotifyPropertyChanged(); }
+        }
+
+        private string message;
+        public string Message
+        {
+            get { return message; }
+            set { message = value; NotifyPropertyChanged(); }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {

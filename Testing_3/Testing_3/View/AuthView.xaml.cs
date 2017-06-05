@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using Windows.Web.Http;
-using Newtonsoft.Json;
 using Testing_3.Model;
 
 namespace Testing_3.View
@@ -33,6 +27,9 @@ namespace Testing_3.View
                 HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, url);
                 try
                 {
+                    progressIndicator.IsVisible = true;
+                    progressIndicator.IsIndeterminate = true;
+                    progressIndicator.Text = "Авторизація";
                     var student = await http.GetRequestJsonAsync<Student>();
                     if (student != null)
                     {
@@ -40,6 +37,8 @@ namespace Testing_3.View
                         var database = DBConnection.GetCoonection();
                         database.Insert(student);
                         App.STUD_ID = student.Id;
+                        progressIndicator.IsVisible = false;
+                        progressIndicator.IsIndeterminate = false;
                         NavigationService.Navigate(new Uri("/View/CourseView.xaml", UriKind.Relative));
                     }
                 }

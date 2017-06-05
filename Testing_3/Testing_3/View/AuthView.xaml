@@ -13,6 +13,10 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="False">
 
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator x:Name="progressIndicator" />
+    </shell:SystemTray.ProgressIndicator>
+    
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -30,9 +34,9 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="12 15" VerticalAlignment="Center">
-            <TextBlock Text="Логін"/>
+            <TextBlock Text="Логін" Style="{StaticResource PhoneTextTitle3Style}"/>
             <TextBox Name="login"/>
-            <TextBlock Text="Пароль"/>
+            <TextBlock Text="Пароль" Style="{StaticResource PhoneTextTitle3Style}"/>
             <PasswordBox Name="password"/>
             <Button Content="Авторизуватись" Name="auth" Click="auth_Click"/>
         </StackPanel>

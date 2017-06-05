@@ -18,7 +18,7 @@ namespace Testing_3.View
 {
     public partial class TestResultView : PhoneApplicationPage
     {
-        TestViewModel testVm;
+        TestViewModel testVM;
 
         ApplicationBarIconButton load = new ApplicationBarIconButton() { IconUri = new Uri("/Assets/AppBar/share.png", UriKind.Relative), IsEnabled = false, Text = "вивантажити" };
 
@@ -29,9 +29,9 @@ namespace Testing_3.View
         public TestResultView()
         {
             InitializeComponent();
-            testVm = new TestViewModel();
-            testVm.GetAllTests();
-            DataContext = testVm;
+            testVM = new TestViewModel();
+            testVM.GetAllTests();
+            DataContext = testVM;
 
             database = DBConnection.GetCoonection();
             try
@@ -60,7 +60,11 @@ namespace Testing_3.View
             });
             string data = Newtonsoft.Json.JsonConvert.SerializeObject(ttt);
             HttpRequestSend req = new HttpRequestSend(App.IP_ADDRESS, "/api/tests/arrays");
+            testVM.IsBusy = true;
+            testVM.Message = "Вивантаження результатів...";
             var w = await req.PostRequest(data);
+            testVM.Message = "Вивантаження завершене!!!";
+            testVM.IsBusy = false;
         }
 
         private void Client_UploadStringCompleted(object sender, UploadStringCompletedEventArgs e)
@@ -82,12 +86,12 @@ namespace Testing_3.View
 
         private void sort_by_type_Click(object sender, EventArgs e)
         {
-            testVm.SortBytype();
+            testVM.SortBytype();
         }
 
         private void sort_by_date_Click(object sender, EventArgs e)
         {
-            testVm.SortByDate();
+            testVM.SortByDate();
         }
 
         

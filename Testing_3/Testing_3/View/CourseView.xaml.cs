@@ -40,7 +40,6 @@ namespace Testing_3.View
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -78,7 +77,7 @@ namespace Testing_3.View
             }
             else
             {
-                ApplicationBar.Buttons.RemoveAt(2);
+                ApplicationBar.Buttons.RemoveAt(3);
                 (ApplicationBar.MenuItems[0] as ApplicationBarMenuItem).IsEnabled = false;
             }
         }
@@ -130,9 +129,13 @@ namespace Testing_3.View
             try
             {
                 HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, "/api/courses");
+                courseVM.IsBusy = true;
+                courseVM.Message = "Оновдення бази даних";
                 var list = await http.GetRequestJsonAsync<List<Course>>();
                 courseVM.removeAll();
                 courseVM.InsertList(list);
+                courseVM.Message = "Оновдення завершено!!!";
+                courseVM.IsBusy = false;
                 MessageBox.Show("База даних оновлена!!!");
             }
             catch (WebException ex)
