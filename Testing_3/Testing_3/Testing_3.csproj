@@ -99,6 +99,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BooleanToVisibilityConverter.cs" />
+    <Compile Include="Connection\NetworkConnection.cs" />
     <Compile Include="HttpRequestSend.cs" />
     <Compile Include="JsonWebClient.cs" />
     <Compile Include="Model\Setings.cs" />
@@ -106,7 +107,7 @@
     <Compile Include="QuestionNotify.cs" />
     <Compile Include="CompareString\CompareScore.cs" />
     <Compile Include="CompareString\ScoreSharp.cs" />
-    <Compile Include="DBConnection\DBConnection.cs" />
+    <Compile Include="Connection\DBConnection.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="Model\Answer.cs" />
     <Compile Include="Model\Course.cs" />

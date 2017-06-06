@@ -49,6 +49,11 @@ namespace Testing_3.View
             {
                 HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, "/api/students/" + st.Login + "/auths/" + st.Password);
                 var s = await http.GetRequestJsonAsync<Student>();
+                if (!NetworkConnection.checkNetworkConnection())
+                {
+                    MessageBox.Show("Відсутнє підключення!!!");
+                    return;
+                }
                 http = new HttpRequestSend(App.IP_ADDRESS, "/api/students/" + s.Id + "/actives/0");
                 await http.GetRequestJsonAsync<Student>();
                 database.Delete(st);
@@ -58,8 +63,7 @@ namespace Testing_3.View
             }
             catch (WebException ex)
             {
-
-                throw;
+                MessageBox.Show("Відсутнє підключення до сервера!!!");
             }
             
             
@@ -130,6 +134,12 @@ namespace Testing_3.View
             try
             {
                 HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, "/api/courses");
+                if (!NetworkConnection.checkNetworkConnection())
+                {
+                    courseVM.IsBusy = false;
+                    MessageBox.Show("Відсутнє підключення");
+                    return;
+                }
                 var list = await http.GetRequestJsonAsync<List<Course>>();
                 courseVM.removeAll();
                 courseVM.InsertList(list);

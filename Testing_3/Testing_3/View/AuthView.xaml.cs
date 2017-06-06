@@ -30,11 +30,15 @@ namespace Testing_3.View
                 HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, url);
                 try
                 {
-                    
+                    if (!NetworkConnection.checkNetworkConnection())
+                    {
+                        progressIndicator.IsVisible = false;
+                        MessageBox.Show("Відсутнє підключення!!!");
+                        return;
+                    }
                     var student = await http.GetRequestJsonAsync<Student>();
                     if (student != null)
                     {
-                        
                         var database = DBConnection.GetCoonection();
                         database.Insert(student);
                         App.STUD_ID = student.Id;
@@ -44,7 +48,8 @@ namespace Testing_3.View
                 }
                 catch (WebException ex)
                 {
-                    MessageBox.Show("Користувача з таким логіном чи паролем не існує, або перервано з'єднання!!!");
+                    progressIndicator.IsVisible = false;
+                    MessageBox.Show("Користувача з таким логіном чи паролем не існує, або відсутнє з'єднання!!!");
                 }
             }
         }

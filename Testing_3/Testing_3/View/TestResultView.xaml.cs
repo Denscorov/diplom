@@ -55,16 +55,30 @@ namespace Testing_3.View
             }
             List<Test> ttt = database.Table<Test>().Where(tt => t.Contains(tt.Id)).ToList();
             HttpRequestSend http = new HttpRequestSend(App.IP_ADDRESS, "/api/students/" + st.Login + "/auths/" + st.Password);
-            var s = await http.GetRequestJsonAsync<Student>();
-            ttt.ForEach((i) => {
-                i.StudentId = s.Id;
-            });
-            string data = Newtonsoft.Json.JsonConvert.SerializeObject(ttt);
-            HttpRequestSend req = new HttpRequestSend(App.IP_ADDRESS, "/api/tests/arrays");
-            
-            var w = await req.PostRequest(data);
-            testVM.IsBusy = false;
-            TestResultList.IsSelectionEnabled = false;
+            try
+            {
+                var s = await http.GetRequestJsonAsync<Student>();
+                ttt.ForEach((i) => {
+                    i.StudentId = s.Id;
+                });
+                string data = Newtonsoft.Json.JsonConvert.SerializeObject(ttt);
+                HttpRequestSend req = new HttpRequestSend(App.IP_ADDRESS, "/api/tests/arrays");
+                if (!NetworkConnection.checkNetworkConnection())
+                {
+                    TestResultList.IsSelectionEnabled = false;
+                    MessageBox.Show("Відсутнє підключення!!!");
+                    return;
+                }
+                var w = await req.PostRequest(data);
+                testVM.IsBusy = false;
+                TestResultList.IsSelectionEnabled = false;
+            }
+            catch
+            {
+                testVM.IsBusy = false;
+                TestResultList.IsSelectionEnabled = false;
+                MessageBox.Show("Відсутнє підключеня до сервера!!!");
+            }
         }
 
         private void Client_UploadStringCompleted(object sender, UploadStringCompletedEventArgs e)
