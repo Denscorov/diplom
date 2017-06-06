@@ -14,7 +14,7 @@ namespace Testing_3
             var ni = NetworkInterface.NetworkInterfaceType;
 
             bool IsConnected = false;
-            if ((ni == NetworkInterfaceType.Wireless80211) || (ni == NetworkInterfaceType.MobileBroadbandCdma))
+            if ((ni == NetworkInterfaceType.Wireless80211) || (ni == NetworkInterfaceType.MobileBroadbandCdma) || (ni == NetworkInterfaceType.MobileBroadbandGsm))
                 IsConnected = true;
             else if (ni == NetworkInterfaceType.None)
                 IsConnected = false;
