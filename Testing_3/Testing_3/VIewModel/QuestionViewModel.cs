@@ -34,6 +34,7 @@ namespace Testing_3.VIewModel
                     
                 }
             }
+            Shuffle(q);
             Entities = new ObservableCollection<Question>(q);
         }
 
@@ -52,6 +53,7 @@ namespace Testing_3.VIewModel
                     q.AddRange(theme.Questions);
                 }
             }
+            Shuffle(q);
             Entities = new ObservableCollection<Question>(q);
         }
 
@@ -66,7 +68,8 @@ namespace Testing_3.VIewModel
             {
                 questions = database.GetAllWithChildren<Question>(q => ids.Contains(q.ThemeId), true);
             }
-            
+
+            Shuffle(questions);
             Entities = new ObservableCollection<Question>(questions);
         }
 

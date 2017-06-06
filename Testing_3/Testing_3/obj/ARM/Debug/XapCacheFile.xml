@@ -1,6 +1,6 @@
-﻿<xapCache source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Testing_3_Debug_ARM.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="06.06.2017 14:49:01">
-  <file source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\resources.pri" archivePath="resources.pri" lastWriteTime="06.06.2017 11:49:41" />
-  <file source="G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\Testing_3.dll" archivePath="Testing_3.dll" lastWriteTime="06.06.2017 14:48:58" />
+﻿<xapCache source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Testing_3_Debug_ARM.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="06.06.2017 15:10:55">
+  <file source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\resources.pri" archivePath="resources.pri" lastWriteTime="06.06.2017 15:10:50" />
+  <file source="G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\Testing_3.dll" archivePath="Testing_3.dll" lastWriteTime="06.06.2017 15:10:50" />
   <file source="G:\Diplom\Testing_3\Testing_3\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="01.05.2017 13:50:44" />
   <file source="G:\Diplom\Testing_3\Testing_3\Assets\AppBar\feature.settings.png" archivePath="Assets\AppBar\feature.settings.png" lastWriteTime="02.02.2015 18:25:14" />
   <file source="G:\Diplom\Testing_3\Testing_3\Assets\AppBar\share.png" archivePath="Assets\AppBar\share.png" lastWriteTime="02.02.2015 18:25:14" />
@@ -25,7 +25,7 @@
   <file source="G:\Diplom\Testing_3\Testing_3\Assets\StoreLogo.png" archivePath="Assets\StoreLogo.png" lastWriteTime="01.05.2017 13:50:44" />
   <file source="G:\Diplom\Testing_3\Testing_3\Assets\WideLogo.png" archivePath="Assets\WideLogo.png" lastWriteTime="01.05.2017 13:50:44" />
   <file source="G:\Diplom\Testing_3\packages\SQLitePCLRaw.lib.e_sqlite3.v110_wp80.1.1.5\runtimes\wp80-arm\native\e_sqlite3.dll" archivePath="e_sqlite3.dll" lastWriteTime="01.05.2017 13:27:44" />
-  <file source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="30.05.2017 11:34:14" />
+  <file source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="06.06.2017 15:10:46" />
   <file source="G:\Diplom\Testing_3\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="01.05.2017 13:50:53" />
   <file source="G:\Diplom\Testing_3\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll" archivePath="Newtonsoft.Json.dll" lastWriteTime="01.05.2017 13:50:50" />
   <file source="G:\Diplom\Testing_3\packages\sqlite-net-pcl.1.3.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll" archivePath="SQLite-net.dll" lastWriteTime="01.05.2017 13:50:54" />
@@ -46,7 +46,7 @@
   <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\ExtensionSDKs\SQLite.WP80\3.18.0\Redist\Debug\ARM\sqlite3.dll" archivePath="sqlite3.dll" lastWriteTime="26.04.2017 9:27:29" />
   <file source="G:\Diplom\Testing_3\Testing_3\Assets\Tiles\Icon.png" archivePath="Assets\Tiles\Icon.png" lastWriteTime="05.06.2017 15:58:06" />
   <file source="G:\Diplom\Testing_3\Testing_3\Assets\Tiles\MiddleIcon.png" archivePath="Assets\Tiles\MiddleIcon.png" lastWriteTime="05.06.2017 15:59:08" />
-  <file source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="05.06.2017 16:00:04" />
-  <file source="G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\MDILProjectFiles.xml" archivePath="MDILProjectFiles.xml" lastWriteTime="06.06.2017 14:49:01" />
-  <file source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\AppxManifest.xml" archivePath="AppxManifest.xml" lastWriteTime="06.06.2017 11:49:45" />
+  <file source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="06.06.2017 15:10:46" />
+  <file source="G:\Diplom\Testing_3\Testing_3\obj\ARM\Debug\MDILProjectFiles.xml" archivePath="MDILProjectFiles.xml" lastWriteTime="06.06.2017 15:10:55" />
+  <file source="G:\Diplom\Testing_3\Testing_3\Bin\ARM\Debug\AppxManifest.xml" archivePath="AppxManifest.xml" lastWriteTime="06.06.2017 15:10:53" />
 </xapCache>
